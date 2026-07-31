@@ -2518,6 +2518,35 @@ h1 {
   }
 }
 
+/* Keep the transition surfaces clear of the speaker heading and final row. */
+.flow-to-dark {
+  margin-bottom: clamp(-24px, -1.5vw, -12px);
+}
+
+.flow-to-light {
+  margin-top: clamp(-24px, -1.5vw, -12px);
+}
+
+.speakers-section {
+  padding-bottom: clamp(64px, 6vw, 84px);
+  padding-top: clamp(72px, 7vw, 96px);
+}
+
+@media (max-width: 600px) {
+  .flow-to-dark {
+    margin-bottom: -8px;
+  }
+
+  .flow-to-light {
+    margin-top: -8px;
+  }
+
+  .speakers-section {
+    padding-bottom: 56px;
+    padding-top: 64px;
+  }
+}
+
 /* Speaker editing */
 button,
 input,
