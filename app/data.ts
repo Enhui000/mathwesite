@@ -9,7 +9,7 @@ export const conference = {
   campus: "凌水主校区",
   city: "大连",
   address: "辽宁省大连市甘井子区凌工路2号 大连理工大学数学与科学学院",
-  venueKeyword: "大连理工大学 数学与科学学院",
+  venueKeyword: "大连理工大学数学科学学院",
   handbookUrl: "/dalian-number-theory-arithmetic-geometry-handbook-v2.pptx",
   handbookPreviewUrl: "/handbook-view.html",
   posterUrl: "/handbook-slides/slide-1.png",
@@ -322,7 +322,7 @@ export function speakerInitials(name: string) {
 
 export function amapSearchUrl() {
   const params = new URLSearchParams({
-    keyword: `${conference.venueKeyword} ${conference.address}`,
+    keyword: conference.venueKeyword,
     city: conference.city,
     view: "map",
     src: "dalian-nt-ag-2026",
