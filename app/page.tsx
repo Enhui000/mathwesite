@@ -57,6 +57,8 @@ export default function Home() {
               className="button glow"
               href={amapSearchUrl()}
               aria-label="在高德地图中打开会议地点"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               高德地图
             </a>
@@ -179,6 +181,8 @@ export default function Home() {
                 className="button primary"
                 href={amapSearchUrl()}
                 aria-label="在高德地图中打开会议地点"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 打开高德地图
               </a>
