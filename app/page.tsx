@@ -56,8 +56,7 @@ export default function Home() {
             <a
               className="button glow"
               href={amapSearchUrl()}
-              target="_blank"
-              rel="noreferrer"
+              aria-label="在高德地图中打开会议地点"
             >
               高德地图
             </a>
@@ -179,16 +178,14 @@ export default function Home() {
               <a
                 className="button primary"
                 href={amapSearchUrl()}
-                target="_blank"
-                rel="noreferrer"
+                aria-label="在高德地图中打开会议地点"
               >
                 打开高德地图
               </a>
               <a
                 className="button muted"
                 href={googleMapsUrl()}
-                target="_blank"
-                rel="noreferrer"
+                aria-label="在 Google Maps 中打开会议地点"
               >
                 Google Maps
               </a>

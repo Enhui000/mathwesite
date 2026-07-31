@@ -322,7 +322,7 @@ export function speakerInitials(name: string) {
 
 export function amapSearchUrl() {
   const params = new URLSearchParams({
-    keyword: conference.venueKeyword,
+    keyword: `${conference.venueKeyword} ${conference.address}`,
     city: conference.city,
     view: "map",
     src: "dalian-nt-ag-2026",
@@ -335,7 +335,7 @@ export function amapSearchUrl() {
 export function googleMapsUrl() {
   const params = new URLSearchParams({
     api: "1",
-    query: conference.address,
+    query: `${conference.venueName}, ${conference.address}`,
   });
 
   return `https://www.google.com/maps/search/?${params.toString()}`;
