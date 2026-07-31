@@ -1,8 +1,9 @@
 # 大连数论与算术几何研讨会网站
 
 This is the Next.js website for the Dalian Number Theory and Arithmetic
-Geometry Conference. It is prepared for static deployment from GitHub to
-Vercel, Tencent Cloud EdgeOne Pages, COS, or any conventional web server.
+Geometry Conference. The `main` branch is the dynamic Vercel edition with
+password-protected speaker editing. The preserved static edition is available
+on the `static-v1` branch.
 
 ## Prerequisites
 
@@ -19,15 +20,30 @@ npm run build
 ## Content Editing
 
 - Main conference data lives in `app/data.ts`.
-- Speaker photos can be placed in `public/speakers/`, then referenced from each
-  speaker's `photo` field.
+- Speakers can click their portrait on the detail page, enter the shared editor
+  password, and update all speaker-specific fields and their portrait.
 - The handbook preview page is `public/handbook-view.html`.
 - The original PPTX handbook is stored in `public/`.
+
+## Dynamic Storage
+
+The dynamic edition uses Vercel Blob for speaker JSON and uploaded portraits.
+Connect a Blob store to the Vercel project, then configure these server-only
+environment variables:
+
+```bash
+CONFERENCE_EDITOR_PASSWORD=<shared-password>
+BLOB_READ_WRITE_TOKEN=<injected-by-vercel-blob>
+```
+
+For local development without Blob, edits are stored in
+`data/speakers.local.json` and portraits in `public/uploads/`. Both paths are
+gitignored.
 
 ## Useful Commands
 
 - `npm run dev`: start local development
-- `npm run build`: create the static production site in `out/`
+- `npm run build`: verify the dynamic production build
 - `npm run typecheck`: run TypeScript checks
 
 ## Deploying to Vercel
@@ -38,15 +54,20 @@ npm run build
 4. Use the default build command `npm run build`.
 5. Deploy.
 
+After creating a Blob store in the Vercel project, set
+`CONFERENCE_EDITOR_PASSWORD` for Production, Preview, and Development, then
+redeploy.
+
 Vercel is useful for an overseas preview, but it should not be treated as the
 mainland China production endpoint.
 
 ## Deploying for Mainland China
 
-For stable direct access in mainland China, import this repository into Tencent
-Cloud EdgeOne Pages and use the following settings:
+For stable direct access in mainland China, deploy the preserved `static-v1`
+branch to Tencent Cloud EdgeOne Pages and use the following settings:
 
 - Framework: `Next.js`
+- Git branch: `static-v1`
 - Build command: `npm run build`
 - Output directory: `out`
 - Acceleration region: Mainland China, or Global including Mainland China

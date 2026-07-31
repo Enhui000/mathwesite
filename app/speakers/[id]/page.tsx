@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { conference, speakerInitials, speakers } from "../../data";
+import { conference } from "../../data";
 import { MathCanvas } from "../../MathCanvas";
+import { getSpeakerById } from "../../server/speaker-store";
+import { SpeakerEditor } from "./SpeakerEditor";
+
+export const dynamic = "force-dynamic";
 
 type SpeakerPageProps = {
   params: Promise<{
@@ -11,17 +14,11 @@ type SpeakerPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return speakers.map((speaker) => ({
-    id: speaker.id,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: SpeakerPageProps): Promise<Metadata> {
   const { id } = await params;
-  const speaker = speakers.find((item) => item.id === id);
+  const speaker = await getSpeakerById(id);
 
   if (!speaker) {
     return {
@@ -37,7 +34,7 @@ export async function generateMetadata({
 
 export default async function SpeakerPage({ params }: SpeakerPageProps) {
   const { id } = await params;
-  const speaker = speakers.find((item) => item.id === id);
+  const speaker = await getSpeakerById(id);
 
   if (!speaker) {
     notFound();
@@ -64,18 +61,7 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
           <Link className="back-link" href="/#speakers">
             返回报告人列表
           </Link>
-          <div className="detail-portrait">
-            {speaker.photo ? (
-              <Image
-                src={speaker.photo}
-                alt={`${speaker.name} 照片`}
-                fill
-                sizes="(max-width: 600px) 180px, 340px"
-              />
-            ) : (
-              <span>{speakerInitials(speaker.name)}</span>
-            )}
-          </div>
+          <SpeakerEditor speaker={speaker} />
           <div>
             <p className="eyebrow">
               {speaker.session} · {speaker.talkNo}
@@ -108,16 +94,6 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
               <p className="section-kicker">Abstract</p>
               <h2>报告摘要</h2>
               <p>{speaker.abstract}</p>
-            </section>
-            <section>
-              <p className="section-kicker">How to update</p>
-              <h2>后续修改位置</h2>
-              <p>
-                每位报告人的照片、简介、报告题目和摘要都集中在
-                <code> app/data.ts </code>
-                中。把照片放到 <code> public/speakers/ </code>
-                后，把对应 speaker 的 photo 改成图片路径即可。
-              </p>
             </section>
           </div>
         </div>

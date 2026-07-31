@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import {
   amapSearchUrl,
   conference,
   googleMapsUrl,
   schedule,
-  speakerInitials,
   speakers,
   stats,
   travel,
 } from "./data";
 import { MathCanvas } from "./MathCanvas";
+import { SpeakerList } from "./SpeakerList";
 
 export const metadata: Metadata = {
   title: "大连数论与算术几何研讨会",
@@ -154,47 +153,9 @@ export default function Home() {
         <div className="section-intro">
           <p className="section-kicker">Speakers</p>
           <h2>报告人</h2>
-          <p>
-            每位报告人现在是一行独立入口。点击后进入个人详情页，后续可替换照片、
-            补充简介、报告题目和摘要。
-          </p>
+          <p>16 位报告人，按会议日期与场次排列。</p>
         </div>
-        <div className="speaker-list">
-          {speakers.map((speaker, index) => (
-            <Link
-              className="speaker-row"
-              href={`/speakers/${speaker.id}`}
-              key={speaker.id}
-            >
-              <span className="speaker-index">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className="speaker-photo">
-                {speaker.photo ? (
-                  <Image
-                    src={speaker.photo}
-                    alt={`${speaker.name} 照片`}
-                    fill
-                    sizes="72px"
-                  />
-                ) : (
-                  <span>{speakerInitials(speaker.name)}</span>
-                )}
-              </span>
-              <span className="speaker-identity">
-                <strong>{speaker.name}</strong>
-                <small>{speaker.affiliation}</small>
-              </span>
-              <span className="speaker-talk">
-                <small>
-                  {speaker.session} · {speaker.talkNo}
-                </small>
-                <strong>{speaker.talkTitle}</strong>
-              </span>
-              <span className="speaker-link">详情</span>
-            </Link>
-          ))}
-        </div>
+        <SpeakerList initialSpeakers={speakers} />
       </section>
 
       <div className="flow-transition flow-to-light" aria-hidden="true">
