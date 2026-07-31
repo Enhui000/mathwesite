@@ -2518,32 +2518,16 @@ h1 {
   }
 }
 
-/* Keep the transition surfaces clear of the speaker heading and final row. */
-.flow-to-dark {
-  margin-bottom: clamp(-24px, -1.5vw, -12px);
-}
-
-.flow-to-light {
-  margin-top: clamp(-24px, -1.5vw, -12px);
-}
-
+/* Preserve the full transitions and move speaker content into a safe area. */
 .speakers-section {
-  padding-bottom: clamp(64px, 6vw, 84px);
-  padding-top: clamp(72px, 7vw, 96px);
+  padding-bottom: clamp(168px, 14vw, 200px);
+  padding-top: clamp(180px, 16vw, 220px);
 }
 
 @media (max-width: 600px) {
-  .flow-to-dark {
-    margin-bottom: -8px;
-  }
-
-  .flow-to-light {
-    margin-top: -8px;
-  }
-
   .speakers-section {
-    padding-bottom: 56px;
-    padding-top: 64px;
+    padding-bottom: 116px;
+    padding-top: 124px;
   }
 }
 
