@@ -332,6 +332,15 @@ export function amapSearchUrl() {
   return `https://uri.amap.com/search?${params.toString()}`;
 }
 
+export function amapWebUrl() {
+  const params = new URLSearchParams({
+    query: conference.venueKeyword,
+    city: conference.city,
+  });
+
+  return `https://ditu.amap.com/search?${params.toString()}`;
+}
+
 export function googleMapsUrl() {
   const params = new URLSearchParams({
     api: "1",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   amapSearchUrl,
+  amapWebUrl,
   conference,
   googleMapsUrl,
   schedule,
@@ -9,6 +10,7 @@ import {
   stats,
   travel,
 } from "./data";
+import { AmapLink } from "./AmapLink";
 import { MathCanvas } from "./MathCanvas";
 import { SpeakerList } from "./SpeakerList";
 
@@ -53,15 +55,16 @@ export default function Home() {
             <a className="button primary" href={conference.handbookPreviewUrl}>
               预览会议手册
             </a>
-            <a
+            <AmapLink
               className="button glow"
               href={amapSearchUrl()}
+              wechatHref={amapWebUrl()}
               aria-label="在高德地图中打开会议地点"
               target="_blank"
               rel="noopener noreferrer"
             >
               高德地图
-            </a>
+            </AmapLink>
           </div>
         </div>
         <div className="hero-index" aria-label="会议信息">
@@ -177,15 +180,16 @@ export default function Home() {
             <h3>{conference.venueName}</h3>
             <p>{conference.address}</p>
             <div className="route-actions">
-              <a
+              <AmapLink
                 className="button primary"
                 href={amapSearchUrl()}
+                wechatHref={amapWebUrl()}
                 aria-label="在高德地图中打开会议地点"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 打开高德地图
-              </a>
+              </AmapLink>
               <a
                 className="button muted"
                 href={googleMapsUrl()}
