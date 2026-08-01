@@ -23,7 +23,7 @@ npm run build
 - Speakers can click their portrait on the detail page, enter the shared editor
   password, and update all speaker-specific fields and their portrait.
 - The handbook preview page is `public/handbook-view.html`.
-- The original PPTX handbook is stored in `public/`.
+- The final PDF handbook and its rendered preview pages are stored in `public/`.
 
 ## Dynamic Storage
 

@@ -235,15 +235,15 @@ export default function Home() {
             <p className="section-kicker">Handbook</p>
             <h2>会议手册与资料</h2>
             <p>
-              手册已加入网站，可在线预览封面、日程、交通和地图，也可下载
-              PPTX 原文件。
+              最终版手册已加入网站，可在线预览全部页面，也可直接查看或下载
+              PDF 文件。
             </p>
             <div className="hero-actions">
               <a className="button primary" href={conference.handbookPreviewUrl}>
                 在线预览
               </a>
               <a className="button muted" href={conference.handbookUrl}>
-                下载 PPTX
+                查看最终版 PDF
               </a>
             </div>
           </div>
