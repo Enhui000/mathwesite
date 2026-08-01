@@ -123,9 +123,9 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
         height * 0.5,
         Math.max(width, height),
       );
-      gradient.addColorStop(0, "#124f8f");
-      gradient.addColorStop(0.36, "#082f5d");
-      gradient.addColorStop(1, "#04172c");
+      gradient.addColorStop(0, "#0a3a7d");
+      gradient.addColorStop(0.42, "#012c63");
+      gradient.addColorStop(1, "#001b3b");
       context.fillStyle = gradient;
       context.fillRect(0, 0, width, height);
     };
@@ -154,16 +154,16 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
           if (Math.abs(seed) % 7 === 1 || Math.abs(seed) % 11 === 3) {
             const pulse = 1.5 + Math.sin(time * 2 + seed) * 0.75;
             context.fillStyle = isDark
-              ? "rgba(115, 181, 239, 0.58)"
-              : "rgba(10, 95, 180, 0.34)";
+              ? "rgba(200, 216, 240, 0.62)"
+              : "rgba(28, 95, 194, 0.34)";
             context.beginPath();
             context.arc(point.x, point.y, Math.max(0.7, pulse), 0, TAU);
             context.fill();
           }
         }
         context.strokeStyle = isDark
-          ? "rgba(142, 190, 234, 0.1)"
-          : "rgba(10, 45, 84, 0.07)";
+          ? "rgba(200, 216, 240, 0.12)"
+          : "rgba(1, 44, 99, 0.07)";
         context.stroke();
       }
       context.restore();
@@ -206,10 +206,10 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
         const alpha = (0.08 + (family / families) * 0.18) * emphasis;
         context.strokeStyle =
           family % 4 === 0
-            ? `rgba(142, 190, 234, ${alpha + 0.08})`
+            ? `rgba(200, 216, 240, ${alpha + 0.08})`
             : isDark
-              ? `rgba(48, 125, 199, ${alpha})`
-              : `rgba(10, 95, 180, ${alpha * 0.72})`;
+              ? `rgba(28, 95, 194, ${alpha})`
+              : `rgba(28, 95, 194, ${alpha * 0.72})`;
         context.lineWidth = family % 4 === 0 ? 1.35 : 0.75;
         context.stroke();
       }
@@ -233,8 +233,8 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
         }
         context.strokeStyle =
           lane % 2 === 0
-            ? "rgba(10, 95, 180, 0.18)"
-            : "rgba(201, 168, 91, 0.22)";
+            ? "rgba(28, 95, 194, 0.18)"
+            : "rgba(200, 216, 240, 0.46)";
         context.lineWidth = lane === 2 ? 1.8 : 1;
         context.stroke();
       }
@@ -263,10 +263,10 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
           else context.lineTo(point.x, point.y);
         }
         context.strokeStyle = isDark
-          ? `rgba(88, 156, 218, ${0.06 + ring * 0.009})`
+          ? `rgba(200, 216, 240, ${0.06 + ring * 0.009})`
           : ring % 4 === 0
-            ? "rgba(201, 168, 91, 0.22)"
-            : "rgba(10, 95, 180, 0.11)";
+            ? "rgba(10, 58, 125, 0.24)"
+            : "rgba(28, 95, 194, 0.11)";
         context.lineWidth = ring % 4 === 0 ? 1.25 : 0.75;
         context.stroke();
       }
@@ -291,10 +291,10 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
         }
         context.strokeStyle =
           line % 5 === 0
-            ? "rgba(201, 168, 91, 0.34)"
+            ? "rgba(200, 216, 240, 0.5)"
             : isDark
-              ? "rgba(88, 156, 218, 0.13)"
-              : "rgba(10, 95, 180, 0.1)";
+              ? "rgba(28, 95, 194, 0.15)"
+              : "rgba(28, 95, 194, 0.1)";
         context.lineWidth = line % 5 === 0 ? 1.2 : 0.7;
         context.stroke();
       }
@@ -316,8 +316,8 @@ export function MathCanvas({ variant = "hero" }: MathCanvasProps) {
         context.beginPath();
         context.arc(x, y, radius, 0, TAU);
         context.strokeStyle = isDark
-          ? `rgba(115, 181, 239, ${0.25 - ring * 0.045})`
-          : `rgba(10, 95, 180, ${0.16 - ring * 0.025})`;
+          ? `rgba(200, 216, 240, ${0.25 - ring * 0.045})`
+          : `rgba(28, 95, 194, ${0.16 - ring * 0.025})`;
         context.lineWidth = 0.8;
         context.stroke();
       }

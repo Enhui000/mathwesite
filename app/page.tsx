@@ -13,6 +13,8 @@ import {
 } from "./data";
 import { AmapLink } from "./AmapLink";
 import { CampusRouteViewer } from "./CampusRouteViewer";
+import { ConferenceHub } from "./ConferenceHub";
+import { ConferencePanelButton } from "./ConferencePanelButton";
 import { MathCanvas } from "./MathCanvas";
 import { SpeakerList } from "./SpeakerList";
 
@@ -25,59 +27,48 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="返回首页">
-          <span className="brand-mark">AG</span>
-          <span>Dalian NT &amp; AG 2026</span>
-        </a>
-        <nav className="nav" aria-label="页面导航">
-          <a href="#program">日程</a>
-          <a href="#speakers">报告人</a>
-          <a href="#venue">地点</a>
-          <a href="#materials">手册</a>
-        </nav>
-      </header>
+      <ConferenceHub />
       <div className="scroll-atmosphere" aria-hidden="true" />
 
       <div className="hero-chapter" id="top">
-      <section className="hero hero-sticky">
-        <MathCanvas variant="hero" />
-        <div className="hero-noise" aria-hidden="true" />
-        <div className="hero-content">
-          <p className="eyebrow">Number Theory / Arithmetic Geometry</p>
-          <h1>{conference.name}</h1>
-          <p className="hero-subtitle">{conference.englishName}</p>
-          <div className="hero-actions">
-            <a className="button primary" href={conference.handbookPreviewUrl}>
-              预览会议手册
-            </a>
-            <AmapLink
-              className="button glow"
-              href={amapSearchUrl()}
-              wechatHref={amapWebUrl()}
-              aria-label="在高德地图中打开会议地点"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              高德地图
-            </AmapLink>
+        <section className="hero hero-sticky">
+          <MathCanvas variant="hero" />
+          <div className="hero-noise" aria-hidden="true" />
+          <div className="hero-content">
+            <p className="eyebrow">Number Theory / Arithmetic Geometry</p>
+            <h1>{conference.name}</h1>
+            <p className="hero-subtitle">{conference.englishName}</p>
+            <div className="hero-actions">
+              <ConferencePanelButton
+                className="button primary"
+                panel="materials"
+              >
+                预览会议手册
+              </ConferencePanelButton>
+              <ConferencePanelButton
+                className="button glow"
+                panel="venue"
+                aria-label="在当前页面查看地点与交通"
+              >
+                地点与交通
+              </ConferencePanelButton>
+            </div>
           </div>
-        </div>
-        <div className="hero-index" aria-label="会议信息">
-          <span className="hero-index-date">{conference.dates}</span>
-          <span>{conference.venueName}</span>
-          {stats.map(([value, label]) => (
-            <span className="stat-item" key={value}>
-              <strong>{value}</strong>
-              <small>{label}</small>
-            </span>
-          ))}
-        </div>
-        <div className="hero-horizon" aria-hidden="true">
-          <span />
-          <i />
-        </div>
-      </section>
+          <div className="hero-index" aria-label="会议信息">
+            <span className="hero-index-date">{conference.dates}</span>
+            <span>{conference.venueName}</span>
+            {stats.map(([value, label]) => (
+              <span className="stat-item" key={value}>
+                <strong>{value}</strong>
+                <small>{label}</small>
+              </span>
+            ))}
+          </div>
+          <div className="hero-horizon" aria-hidden="true">
+            <span />
+            <i />
+          </div>
+        </section>
       </div>
 
       <section className="section overview-section reveal-section">
@@ -237,15 +228,19 @@ export default function Home() {
               PDF 文件。
             </p>
             <div className="hero-actions">
-              <a className="button primary" href={conference.handbookPreviewUrl}>
+              <ConferencePanelButton className="button primary" panel="materials">
                 在线预览
-              </a>
+              </ConferencePanelButton>
               <a className="button muted" href={conference.handbookUrl}>
                 查看最终版 PDF
               </a>
             </div>
           </div>
-          <a className="handbook-cover" href={conference.handbookPreviewUrl}>
+          <ConferencePanelButton
+            className="handbook-cover"
+            panel="materials"
+            aria-label="在当前页面预览会议手册"
+          >
             <Image
               src={conference.posterUrl}
               alt="会议手册封面"
@@ -253,7 +248,7 @@ export default function Home() {
               height={900}
               sizes="(max-width: 820px) 76vw, 34vw"
             />
-          </a>
+          </ConferencePanelButton>
         </div>
       </section>
 

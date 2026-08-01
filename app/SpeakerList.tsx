@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { openConferencePanel } from "./conference-panel";
 import { speakerInitials, type Speaker } from "./data";
 
 type SpeakerListProps = {
@@ -41,6 +42,10 @@ export function SpeakerList({ initialSpeakers }: SpeakerListProps) {
           className="speaker-row"
           href={`/speakers/${speaker.id}`}
           key={speaker.id}
+          onClick={(event) => {
+            event.preventDefault();
+            openConferencePanel({ panel: "speakers", speakerId: speaker.id });
+          }}
         >
           <span className="speaker-index">
             {String(index + 1).padStart(2, "0")}

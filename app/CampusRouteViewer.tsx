@@ -24,15 +24,19 @@ type CampusRouteViewerProps = {
   roads: string;
 };
 
-const imageHeight = 1018;
-const imageWidth = 1132;
+const referenceHeight = 1018;
+const referenceWidth = 1132;
+const imageHeight = 1191;
+const imageWidth = 1326;
 const imageBounds = [
   [0, 0],
   [imageHeight, imageWidth],
 ] as [[number, number], [number, number]];
 
 function mapPoint(x: number, y: number): [number, number] {
-  return [imageHeight - y, x];
+  const scaledX = x * (imageWidth / referenceWidth);
+  const scaledY = y * (imageHeight / referenceHeight);
+  return [imageHeight - scaledY, scaledX];
 }
 
 const campusPoints = [
@@ -124,8 +128,8 @@ export function CampusRouteViewer({
       });
 
       const bounds = L.latLngBounds(imageBounds);
-      L.imageOverlay("/campus-route-v11.png", bounds, {
-        alt: "V11会议手册中的校内步行路线图",
+      L.imageOverlay("/campus-map-clean-v11.jpg", bounds, {
+        alt: "V11会议手册中的大连理工大学凌水主校区地图",
       }).addTo(map);
 
       L.polyline(handbookRoute, {
