@@ -1024,6 +1024,132 @@ h1 {
   width: 100%;
 }
 
+.campus-route-viewer {
+  align-self: center;
+  background: #f5f2e9;
+  border: 1px solid rgba(10, 45, 84, 0.16);
+  box-shadow: 0 30px 90px rgba(11, 45, 84, 0.14);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.route-view-tabs {
+  background: var(--navy);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 6px;
+}
+
+.route-view-tabs button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 250, 240, 0.58);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 760;
+  gap: 8px;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.route-view-tabs button[aria-pressed="true"] {
+  background: #fffaf0;
+  color: var(--navy);
+}
+
+.route-map-frame {
+  aspect-ratio: 4 / 3;
+  background: #ece9df;
+  overflow: hidden;
+  position: relative;
+}
+
+.route-map-frame img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.route-map-source {
+  background: rgba(10, 45, 84, 0.86);
+  bottom: 12px;
+  color: #fffaf0;
+  font-size: 11px;
+  font-weight: 780;
+  left: 12px;
+  padding: 7px 10px;
+  position: absolute;
+}
+
+.route-summary {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+}
+
+.route-summary-heading {
+  align-items: center;
+  color: var(--navy);
+  display: flex;
+  gap: 12px;
+}
+
+.route-summary-heading div {
+  display: grid;
+  gap: 3px;
+}
+
+.route-summary-heading small,
+.route-endpoints dt {
+  color: rgba(10, 45, 84, 0.58);
+  font-size: 11px;
+  font-weight: 780;
+}
+
+.route-summary-heading strong {
+  font-size: 20px;
+}
+
+.route-endpoints {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.route-endpoints div {
+  align-items: baseline;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 38px minmax(0, 1fr);
+}
+
+.route-endpoints dd {
+  color: rgba(17, 20, 24, 0.82);
+  font-size: 14px;
+  margin: 0;
+}
+
+.route-summary > p {
+  color: rgba(17, 20, 24, 0.6);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.route-open-button {
+  gap: 8px;
+  justify-self: start;
+}
+
+.route-summary .button.primary {
+  background: var(--navy);
+  color: #fffaf0;
+}
+
 .travel-stream {
   display: grid;
   gap: 0;
@@ -1548,6 +1674,10 @@ h1 {
 
   .button {
     width: 100%;
+  }
+
+  .route-open-button {
+    justify-self: stretch;
   }
 
   .section {

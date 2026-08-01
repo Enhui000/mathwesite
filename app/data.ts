@@ -338,6 +338,16 @@ export const travel = [
   },
 ];
 
+export const campusWalkingRoute = {
+  startName: "大连理工国际会议中心",
+  start: [121.53261, 38.875773] as const,
+  endName: "大连理工大学综合教学1号楼",
+  end: [121.525613, 38.882665] as const,
+  distance: "约1.36公里",
+  duration: "约18分钟",
+  roads: "弘远南路 → 汇英路 → 凌水路 → 修齐路",
+};
+
 export function speakerInitials(name: string) {
   return name.slice(0, 2);
 }
@@ -363,11 +373,41 @@ export function amapWebUrl() {
   return `https://ditu.amap.com/search?${params.toString()}`;
 }
 
+export function amapWalkingRouteUrl() {
+  const params = new URLSearchParams({
+    from: `${campusWalkingRoute.start.join(",")},${campusWalkingRoute.startName}`,
+    to: `${campusWalkingRoute.end.join(",")},${campusWalkingRoute.endName}`,
+    mode: "walk",
+    policy: "0",
+    src: "dalian-nt-ag-2026",
+    callnative: "1",
+  });
+
+  return `https://uri.amap.com/navigation?${params.toString()}`;
+}
+
+export function amapWalkingRouteWebUrl() {
+  const params = new URLSearchParams({
+    type: "walk",
+    "from[lnglat]": campusWalkingRoute.start.join(","),
+    "from[name]": campusWalkingRoute.startName,
+    "to[lnglat]": campusWalkingRoute.end.join(","),
+    "to[name]": campusWalkingRoute.endName,
+    src: "dalian-nt-ag-2026",
+    callnative: "0",
+    innersrc: "uriapi",
+  });
+
+  return `https://ditu.amap.com/dir?${params.toString()}`;
+}
+
 export function googleMapsUrl() {
   const params = new URLSearchParams({
     api: "1",
-    query: `${conference.venueName}, ${conference.address}`,
+    origin: campusWalkingRoute.startName,
+    destination: campusWalkingRoute.endName,
+    travelmode: "walking",
   });
 
-  return `https://www.google.com/maps/search/?${params.toString()}`;
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
 }

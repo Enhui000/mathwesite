@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   amapSearchUrl,
+  amapWalkingRouteUrl,
+  amapWalkingRouteWebUrl,
   amapWebUrl,
+  campusWalkingRoute,
   conference,
   googleMapsUrl,
   schedule,
@@ -11,6 +14,7 @@ import {
   travel,
 } from "./data";
 import { AmapLink } from "./AmapLink";
+import { CampusRouteViewer } from "./CampusRouteViewer";
 import { MathCanvas } from "./MathCanvas";
 import { SpeakerList } from "./SpeakerList";
 
@@ -182,32 +186,32 @@ export default function Home() {
             <div className="route-actions">
               <AmapLink
                 className="button primary"
-                href={amapSearchUrl()}
-                wechatHref={amapWebUrl()}
-                aria-label="在高德地图中打开会议地点"
+                href={amapWalkingRouteUrl()}
+                wechatHref={amapWalkingRouteWebUrl()}
+                aria-label="在高德地图中打开最优步行路线"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                打开高德地图
+                高德步行路线
               </AmapLink>
               <a
                 className="button muted"
                 href={googleMapsUrl()}
-                aria-label="在 Google Maps 中打开会议地点"
+                aria-label="在 Google Maps 中打开步行路线"
               >
                 Google Maps
               </a>
             </div>
           </div>
-          <a className="map-preview" href={conference.campusMapUrl}>
-            <Image
-              src={conference.campusMapUrl}
-              alt="大连理工大学校园地图"
-              width={637}
-              height={900}
-              sizes="(max-width: 820px) 100vw, 58vw"
-            />
-          </a>
+          <CampusRouteViewer
+            amapHref={amapWalkingRouteUrl()}
+            wechatHref={amapWalkingRouteWebUrl()}
+            startName={campusWalkingRoute.startName}
+            endName={campusWalkingRoute.endName}
+            distance={campusWalkingRoute.distance}
+            duration={campusWalkingRoute.duration}
+            roads={campusWalkingRoute.roads}
+          />
         </div>
         <div className="travel-stream">
           {travel.map((item) => (
