@@ -43,12 +43,6 @@ export default function Home() {
       <section className="hero hero-sticky">
         <MathCanvas variant="hero" />
         <div className="hero-noise" aria-hidden="true" />
-        <div className="hero-notation" aria-hidden="true">
-          <span>ζ(s)</span>
-          <span>Spec Z</span>
-          <span>H¹(X, Q<sub>p</sub>)</span>
-          <span>y² = x³ + ax + b</span>
-        </div>
         <div className="hero-content">
           <p className="eyebrow">Number Theory / Arithmetic Geometry</p>
           <h1>{conference.name}</h1>
