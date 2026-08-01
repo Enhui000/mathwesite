@@ -1,8 +1,17 @@
 "use client";
 
-import { Footprints, Map, Navigation } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+import type { Map as LeafletMap } from "leaflet";
+import {
+  ArrowLeftRight,
+  Footprints,
+  LocateFixed,
+  Minus,
+  Navigation,
+  Plus,
+  RotateCcw,
+  Search,
+} from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AmapLink } from "./AmapLink";
 
 type CampusRouteViewerProps = {
@@ -15,20 +24,61 @@ type CampusRouteViewerProps = {
   roads: string;
 };
 
-const routeViews = {
-  amap: {
-    label: "高德路线",
-    image: "/amap-optimal-walking-route.png",
-    alt: "高德地图显示的大连理工国际会议中心至综合教学1号楼最优步行路线",
-  },
-  campus: {
-    label: "校园路线图",
-    image: "/campus-optimal-walking-route.png",
-    alt: "校园地图风格的大连理工国际会议中心至综合教学1号楼步行路线",
-  },
-} as const;
+const imageHeight = 1018;
+const imageWidth = 1132;
+const imageBounds = [
+  [0, 0],
+  [imageHeight, imageWidth],
+] as [[number, number], [number, number]];
 
-type RouteView = keyof typeof routeViews;
+function mapPoint(x: number, y: number): [number, number] {
+  return [imageHeight - y, x];
+}
+
+const campusPoints = [
+  {
+    id: "hotel",
+    name: "大连理工国际会议中心",
+    detail: "报到、住宿与校内路线起点",
+    position: mapPoint(816, 818),
+    markerClass: "route-marker-start",
+  },
+  {
+    id: "venue",
+    name: "大连理工大学综合教学1号楼",
+    detail: "会议地点",
+    position: mapPoint(560, 414),
+    markerClass: "route-marker-end",
+  },
+  {
+    id: "math",
+    name: "大连理工大学数学科学学院",
+    detail: "凌水主校区校内地点",
+    position: mapPoint(404, 315),
+    markerClass: "route-marker-poi",
+  },
+] as const;
+
+const handbookRoute = [
+  mapPoint(816, 818),
+  mapPoint(760, 818),
+  mapPoint(719, 808),
+  mapPoint(680, 784),
+  mapPoint(664, 750),
+  mapPoint(663, 692),
+  mapPoint(654, 670),
+  mapPoint(590, 670),
+  mapPoint(574, 651),
+  mapPoint(574, 606),
+  mapPoint(534, 583),
+  mapPoint(520, 554),
+  mapPoint(520, 517),
+  mapPoint(526, 478),
+  mapPoint(560, 476),
+  mapPoint(568, 456),
+  mapPoint(568, 424),
+  mapPoint(560, 414),
+];
 
 export function CampusRouteViewer({
   amapHref,
@@ -39,47 +89,185 @@ export function CampusRouteViewer({
   duration,
   roads,
 }: CampusRouteViewerProps) {
-  const [view, setView] = useState<RouteView>("amap");
-  const activeView = routeViews[view];
+  const mapElementRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<LeafletMap | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+  const [reverse, setReverse] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const searchResults = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    if (!normalized) return [];
+    return campusPoints.filter((point) =>
+      `${point.name}${point.detail}`.toLowerCase().includes(normalized),
+    );
+  }, [query]);
+
+  useEffect(() => {
+    let disposed = false;
+
+    void import("leaflet").then((L) => {
+      if (disposed || !mapElementRef.current || mapRef.current) return;
+
+      const map = L.map(mapElementRef.current, {
+        attributionControl: false,
+        center: [imageHeight / 2, imageWidth / 2],
+        crs: L.CRS.Simple,
+        maxBounds: L.latLngBounds([-110, -110], [imageHeight + 110, imageWidth + 110]),
+        maxBoundsViscosity: 0.88,
+        maxZoom: 1.8,
+        minZoom: -0.8,
+        scrollWheelZoom: true,
+        zoom: -0.25,
+        zoomControl: false,
+        zoomSnap: 0.1,
+      });
+
+      const bounds = L.latLngBounds(imageBounds);
+      L.imageOverlay("/campus-route-v11.png", bounds, {
+        alt: "V11会议手册中的校内步行路线图",
+      }).addTo(map);
+
+      L.polyline(handbookRoute, {
+        className: "handbook-route-line",
+        color: "#ef3f2f",
+        opacity: 0.95,
+        weight: 7,
+      }).addTo(map);
+
+      campusPoints.forEach((point) => {
+        const icon = L.divIcon({
+          className: `campus-route-marker ${point.markerClass}`,
+          html: "<span></span>",
+          iconAnchor: [12, 12],
+          iconSize: [24, 24],
+          popupAnchor: [0, -13],
+        });
+        L.marker(point.position, { icon })
+          .bindPopup(`<strong>${point.name}</strong><small>${point.detail}</small>`)
+          .addTo(map);
+      });
+
+      map.fitBounds(bounds, { padding: [8, 8] });
+      mapRef.current = map;
+      setMapReady(true);
+    });
+
+    return () => {
+      disposed = true;
+      mapRef.current?.remove();
+      mapRef.current = null;
+    };
+  }, []);
+
+  const fitRoute = () => {
+    mapRef.current?.fitBounds(imageBounds, { padding: [8, 8] });
+  };
+
+  const focusPoint = (position: [number, number]) => {
+    mapRef.current?.flyTo(position, 0.7, { duration: 0.7 });
+    setQuery("");
+  };
+
+  const routeStart = reverse ? endName : startName;
+  const routeEnd = reverse ? startName : endName;
 
   return (
     <div className="campus-route-viewer">
-      <div className="route-view-tabs" aria-label="路线图显示方式">
+      <div className="route-view-tabs" aria-label="校内路线方向">
         <button
           type="button"
-          aria-pressed={view === "amap"}
-          onClick={() => setView("amap")}
+          aria-pressed={!reverse}
+          onClick={() => setReverse(false)}
         >
-          <Navigation aria-hidden="true" size={16} strokeWidth={1.8} />
-          高德路线
+          <Footprints aria-hidden="true" size={16} strokeWidth={1.8} />
+          去会场 · 约17分钟
         </button>
         <button
           type="button"
-          aria-pressed={view === "campus"}
-          onClick={() => setView("campus")}
+          aria-pressed={reverse}
+          onClick={() => setReverse(true)}
         >
-          <Map aria-hidden="true" size={16} strokeWidth={1.8} />
-          校园路线图
+          <ArrowLeftRight aria-hidden="true" size={16} strokeWidth={1.8} />
+          返回酒店 · 约17分钟
         </button>
       </div>
 
-      <div className="route-map-frame">
-        <Image
-          key={activeView.image}
-          src={activeView.image}
-          alt={activeView.alt}
-          fill
-          priority={view === "amap"}
-          sizes="(max-width: 820px) 100vw, 58vw"
+      <div
+        className={`interactive-campus-map${reverse ? " route-is-reversed" : ""}`}
+      >
+        <div className="campus-map-search">
+          <Search aria-hidden="true" size={16} />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="搜索校内地点"
+            aria-label="搜索校内地点"
+          />
+          {query ? (
+            <div className="campus-map-results">
+              {searchResults.length > 0 ? (
+                searchResults.map((point) => (
+                  <button
+                    type="button"
+                    key={point.id}
+                    onClick={() => focusPoint([...point.position])}
+                  >
+                    <strong>{point.name}</strong>
+                    <small>{point.detail}</small>
+                  </button>
+                ))
+              ) : (
+                <p>校内图中暂无该地点，可使用下方高德地图继续查询。</p>
+              )}
+            </div>
+          ) : null}
+        </div>
+        <div
+          className="campus-leaflet-map"
+          ref={mapElementRef}
+          aria-label="可拖动和缩放的会议校内步行路线图"
         />
-        <span className="route-map-source">{activeView.label}</span>
+        <div className="campus-map-controls" aria-label="地图缩放控制">
+          <button
+            type="button"
+            onClick={() => mapRef.current?.zoomIn(0.4)}
+            disabled={!mapReady}
+            aria-label="放大地图"
+            title="放大"
+          >
+            <Plus aria-hidden="true" size={18} />
+          </button>
+          <button
+            type="button"
+            onClick={() => mapRef.current?.zoomOut(0.4)}
+            disabled={!mapReady}
+            aria-label="缩小地图"
+            title="缩小"
+          >
+            <Minus aria-hidden="true" size={18} />
+          </button>
+          <button
+            type="button"
+            onClick={fitRoute}
+            disabled={!mapReady}
+            aria-label="显示完整路线"
+            title="显示完整路线"
+          >
+            <RotateCcw aria-hidden="true" size={17} />
+          </button>
+        </div>
+        <span className="route-map-source">
+          <LocateFixed aria-hidden="true" size={13} /> V11 手册路线
+        </span>
       </div>
 
       <div className="route-summary">
         <div className="route-summary-heading">
           <Footprints aria-hidden="true" size={20} strokeWidth={1.8} />
           <div>
-            <small>高德步行最优路线</small>
+            <small>V11 手册推荐 · 校内步行</small>
             <strong>
               {distance} · {duration}
             </strong>
@@ -88,11 +276,11 @@ export function CampusRouteViewer({
         <dl className="route-endpoints">
           <div>
             <dt>起点</dt>
-            <dd>{startName}</dd>
+            <dd>{routeStart}</dd>
           </div>
           <div>
             <dt>终点</dt>
-            <dd>{endName}</dd>
+            <dd>{routeEnd}</dd>
           </div>
         </dl>
         <p>{roads}</p>
@@ -102,10 +290,10 @@ export function CampusRouteViewer({
           wechatHref={wechatHref}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="在高德地图中查看最优步行路线"
+          aria-label="在新窗口打开高德地图继续查询地点和路线"
         >
           <Navigation aria-hidden="true" size={17} strokeWidth={1.8} />
-          在高德查看路线
+          在高德继续查询地点与路线
         </AmapLink>
       </div>
     </div>

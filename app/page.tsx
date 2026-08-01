@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   amapSearchUrl,
-  amapWalkingRouteUrl,
-  amapWalkingRouteWebUrl,
   amapWebUrl,
   campusWalkingRoute,
   conference,
@@ -186,26 +184,28 @@ export default function Home() {
             <div className="route-actions">
               <AmapLink
                 className="button primary"
-                href={amapWalkingRouteUrl()}
-                wechatHref={amapWalkingRouteWebUrl()}
-                aria-label="在高德地图中打开最优步行路线"
+                href={amapSearchUrl()}
+                wechatHref={amapWebUrl()}
+                aria-label="在新窗口打开高德地图查询会议地点"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                高德步行路线
+                高德地点查询
               </AmapLink>
               <a
                 className="button muted"
                 href={googleMapsUrl()}
                 aria-label="在 Google Maps 中打开步行路线"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Google Maps
               </a>
             </div>
           </div>
           <CampusRouteViewer
-            amapHref={amapWalkingRouteUrl()}
-            wechatHref={amapWalkingRouteWebUrl()}
+            amapHref={amapSearchUrl()}
+            wechatHref={amapWebUrl()}
             startName={campusWalkingRoute.startName}
             endName={campusWalkingRoute.endName}
             distance={campusWalkingRoute.distance}

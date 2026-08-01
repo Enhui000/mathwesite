@@ -5,11 +5,11 @@ export const conference = {
   shortDates: "Aug 16-21, 2026",
   registration: "8月16日 14:00-21:00",
   registrationVenue: "大连理工国际会议中心（17:30-20:00 一楼晚餐）",
-  venueName: "大连理工大学数学科学学院",
+  venueName: "大连理工大学综合教学1号楼",
   campus: "凌水主校区",
   city: "大连",
-  address: "辽宁省大连市甘井子区凌工路2号 大连理工大学数学科学学院",
-  venueKeyword: "大连理工大学数学科学学院",
+  address: "大连理工大学凌水主校区 · 综合教学1号楼",
+  venueKeyword: "大连理工大学综合教学1号楼",
   handbookUrl: "/dalian-number-theory-arithmetic-geometry-handbook-final.pdf",
   handbookPreviewUrl: "/handbook-view.html",
   posterUrl: "/handbook-final/page-01.png",
@@ -30,7 +30,7 @@ export const schedule = [
     label: "开幕日 · MON",
     events: [
       ["09:20", "开幕式 · 柳振鑫主持"],
-      ["09:30", "Talk 1 · 秦厚荣，南京大学"],
+      ["09:30", "Talk 1 · 刘若川，北京大学"],
       ["10:30", "茶歇及合影"],
       ["11:00", "Talk 2 · 范洋宇，北京理工大学"],
       ["12:00", "午餐"],
@@ -84,9 +84,9 @@ export const schedule = [
     day: "08.21",
     label: "闭幕日 · FRI",
     events: [
-      ["09:30", "Talk 1 · 欧阳毅，中国科学技术大学"],
+      ["09:30", "Talk 1 · 秦厚荣，南京大学"],
       ["10:30", "茶歇"],
-      ["11:00", "Talk 2 · 刘若川，北京大学"],
+      ["11:00", "Talk 2 · 欧阳毅，中国科学技术大学"],
       ["12:00", "午餐"],
       ["14:00", "离会"],
     ],
@@ -112,18 +112,19 @@ const defaultBio =
 const defaultAbstract =
   "报告摘要待报告人补充。";
 
-export const speakers: Speaker[] = [
+const speakerRecords: Speaker[] = [
   {
     id: "qin-hourong",
     name: "秦厚荣",
     affiliation: "南京大学",
-    session: "08.17 09:30-10:30",
+    session: "08.21 09:30-10:30",
     talkNo: "Talk 1",
-    talkTitle: "报告题目待更新",
-    keywords: ["Number Theory", "Arithmetic Geometry"],
+    talkTitle: "Isogeny-based Cryptography",
+    keywords: ["Isogeny Cryptography", "Post-Quantum Cryptography"],
     photo: "",
     bio: defaultBio,
-    abstract: defaultAbstract,
+    abstract:
+      "本报告将介绍基于超奇异椭圆曲线和阿贝尔簇同源的后量子密码体系，并介绍我们团队在这方面的一些工作，主要包括后量子密码签名方案 SQIsign2D^2 的设计。",
   },
   {
     id: "fan-yangyu",
@@ -294,8 +295,8 @@ export const speakers: Speaker[] = [
     id: "ouyang-yi",
     name: "欧阳毅",
     affiliation: "中国科学技术大学",
-    session: "08.21 09:30-10:30",
-    talkNo: "Talk 1",
+    session: "08.21 11:00-12:00",
+    talkNo: "Talk 2",
     talkTitle: "Isogeny-based Cryptography",
     keywords: ["Isogeny Cryptography", "Post-Quantum Cryptography"],
     photo: "",
@@ -307,8 +308,8 @@ export const speakers: Speaker[] = [
     id: "liu-ruochuan",
     name: "刘若川",
     affiliation: "北京大学",
-    session: "08.21 11:00-12:00",
-    talkNo: "Talk 2",
+    session: "08.17 09:30-10:30",
+    talkNo: "Talk 1",
     talkTitle: "报告题目待更新",
     keywords: ["p-adic Hodge Theory", "Arithmetic Geometry"],
     photo: "",
@@ -316,6 +317,33 @@ export const speakers: Speaker[] = [
     abstract: defaultAbstract,
   },
 ];
+
+const speakerOrder = [
+  "liu-ruochuan",
+  "fan-yangyu",
+  "hu-haoyu",
+  "zhao-heer",
+  "xiao-liang",
+  "ding-yiwen",
+  "hu-yongquan",
+  "wang-shanwen",
+  "chen-ke",
+  "sheng-mao",
+  "fu-lei",
+  "xu-daxin",
+  "min-yu",
+  "du-heng",
+  "qin-hourong",
+  "ouyang-yi",
+];
+
+export const speakers = speakerOrder.map((id) => {
+  const speaker = speakerRecords.find((record) => record.id === id);
+  if (!speaker) {
+    throw new Error(`Missing speaker record: ${id}`);
+  }
+  return speaker;
+});
 
 export const travel = [
   {
@@ -325,16 +353,16 @@ export const travel = [
     transit: "公共交通全程约60分钟，票价约5-7元。",
   },
   {
-    title: "大连北站",
-    distance: "约20公里",
-    taxi: "约30-40分钟，50-60元",
-    transit: "公共交通全程约60-70分钟，票价约5-7元。",
-  },
-  {
     title: "大连站",
     distance: "约13公里",
     taxi: "约25-30分钟，35-45元",
     transit: "公共交通全程约50-60分钟，票价约5-7元。",
+  },
+  {
+    title: "大连北站",
+    distance: "约20公里",
+    taxi: "约30-40分钟，50-60元",
+    transit: "公共交通全程约60-70分钟，票价约5-7元。",
   },
 ];
 
@@ -343,9 +371,9 @@ export const campusWalkingRoute = {
   start: [121.53261, 38.875773] as const,
   endName: "大连理工大学综合教学1号楼",
   end: [121.525613, 38.882665] as const,
-  distance: "约1.36公里",
-  duration: "约18分钟",
-  roads: "弘远南路 → 汇英路 → 凌水路 → 修齐路",
+  distance: "校内步行",
+  duration: "约17分钟",
+  roads: "从酒店后门刷身份证进入校园，沿手册红色路线步行至综合教学1号楼。",
 };
 
 export function speakerInitials(name: string) {

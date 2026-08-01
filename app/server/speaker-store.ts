@@ -28,11 +28,38 @@ function hasBlobStorage() {
 
 function mergeWithDefaults(stored: Speaker[]) {
   const storedById = new Map(stored.map((speaker) => [speaker.id, speaker]));
-  return defaultSpeakers.map((fallback) => ({
-    ...fallback,
-    ...storedById.get(fallback.id),
-    id: fallback.id,
-  }));
+  return defaultSpeakers.map((fallback) => {
+    const saved = storedById.get(fallback.id);
+    const merged = {
+      ...fallback,
+      ...saved,
+      id: fallback.id,
+    };
+
+    // V11 moved three speakers. Only replace values that still match V10 so
+    // any later edits made by a speaker remain intact.
+    if (fallback.id === "liu-ruochuan" && saved?.session === "08.21 11:00-12:00") {
+      merged.session = fallback.session;
+      merged.talkNo = fallback.talkNo;
+    }
+    if (fallback.id === "ouyang-yi" && saved?.session === "08.21 09:30-10:30") {
+      merged.session = fallback.session;
+      merged.talkNo = fallback.talkNo;
+    }
+    if (fallback.id === "qin-hourong" && saved?.session === "08.17 09:30-10:30") {
+      merged.session = fallback.session;
+      merged.talkNo = fallback.talkNo;
+      if (saved.talkTitle === "报告题目待更新") {
+        merged.talkTitle = fallback.talkTitle;
+        merged.keywords = fallback.keywords;
+      }
+      if (saved.abstract === "报告摘要待报告人补充。") {
+        merged.abstract = fallback.abstract;
+      }
+    }
+
+    return merged;
+  });
 }
 
 function isSpeakerList(value: unknown): value is Speaker[] {
