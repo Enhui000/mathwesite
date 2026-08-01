@@ -4,7 +4,8 @@ export const conference = {
   dates: "2026年8月16日 - 8月21日",
   shortDates: "Aug 16-21, 2026",
   registration: "8月16日 14:00-21:00",
-  registrationVenue: "大连理工国际会议中心（17:30-20:00 一楼晚餐）",
+  registrationVenue:
+    "大连理工国际会议中心（住宿 / 午餐 / 晚餐；17:30-20:00 一楼晚餐）",
   venueName: "大连理工大学综合教学1号楼",
   campus: "凌水主校区",
   city: "大连",

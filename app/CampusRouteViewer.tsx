@@ -24,8 +24,6 @@ type CampusRouteViewerProps = {
   roads: string;
 };
 
-const referenceHeight = 1018;
-const referenceWidth = 1132;
 const imageHeight = 1191;
 const imageWidth = 1326;
 const imageBounds = [
@@ -34,9 +32,7 @@ const imageBounds = [
 ] as [[number, number], [number, number]];
 
 function mapPoint(x: number, y: number): [number, number] {
-  const scaledX = x * (imageWidth / referenceWidth);
-  const scaledY = y * (imageHeight / referenceHeight);
-  return [imageHeight - scaledY, scaledX];
+  return [imageHeight - y, x];
 }
 
 const campusPoints = [
@@ -44,44 +40,49 @@ const campusPoints = [
     id: "hotel",
     name: "大连理工国际会议中心",
     detail: "报到、住宿与校内路线起点",
-    position: mapPoint(816, 818),
+    position: mapPoint(929, 957),
     markerClass: "route-marker-start",
   },
   {
     id: "venue",
     name: "大连理工大学综合教学1号楼",
     detail: "会议地点",
-    position: mapPoint(560, 414),
+    position: mapPoint(653, 552),
     markerClass: "route-marker-end",
   },
   {
     id: "math",
     name: "大连理工大学数学科学学院",
     detail: "凌水主校区校内地点",
-    position: mapPoint(404, 315),
+    position: mapPoint(473, 369),
     markerClass: "route-marker-poi",
   },
 ] as const;
 
 const handbookRoute = [
-  mapPoint(816, 818),
-  mapPoint(760, 818),
-  mapPoint(719, 808),
-  mapPoint(680, 784),
-  mapPoint(664, 750),
-  mapPoint(663, 692),
-  mapPoint(654, 670),
-  mapPoint(590, 670),
-  mapPoint(574, 651),
-  mapPoint(574, 606),
-  mapPoint(534, 583),
-  mapPoint(520, 554),
-  mapPoint(520, 517),
-  mapPoint(526, 478),
-  mapPoint(560, 476),
-  mapPoint(568, 456),
-  mapPoint(568, 424),
-  mapPoint(560, 414),
+  mapPoint(929, 957),
+  mapPoint(872, 962),
+  mapPoint(846, 958),
+  mapPoint(821, 947),
+  mapPoint(781, 921),
+  mapPoint(772, 910),
+  mapPoint(768, 896),
+  mapPoint(770, 829),
+  mapPoint(767, 813),
+  mapPoint(690, 810),
+  mapPoint(666, 794),
+  mapPoint(657, 755),
+  mapPoint(657, 656),
+  mapPoint(647, 652),
+  mapPoint(612, 653),
+  mapPoint(605, 647),
+  mapPoint(603, 639),
+  mapPoint(606, 618),
+  mapPoint(616, 602),
+  mapPoint(647, 600),
+  mapPoint(652, 596),
+  mapPoint(655, 588),
+  mapPoint(653, 552),
 ];
 
 export function CampusRouteViewer({
@@ -128,8 +129,8 @@ export function CampusRouteViewer({
       });
 
       const bounds = L.latLngBounds(imageBounds);
-      L.imageOverlay("/campus-map-clean-v11.jpg", bounds, {
-        alt: "V11会议手册中的大连理工大学凌水主校区地图",
+      L.imageOverlay("/campus-map-clean-v12.jpg", bounds, {
+        alt: "V12会议手册中的大连理工大学凌水主校区地图",
       }).addTo(map);
 
       L.polyline(handbookRoute, {
@@ -263,7 +264,7 @@ export function CampusRouteViewer({
           </button>
         </div>
         <span className="route-map-source">
-          <LocateFixed aria-hidden="true" size={13} /> V11 手册路线
+          <LocateFixed aria-hidden="true" size={13} /> V12 手册路线
         </span>
       </div>
 
@@ -271,7 +272,7 @@ export function CampusRouteViewer({
         <div className="route-summary-heading">
           <Footprints aria-hidden="true" size={20} strokeWidth={1.8} />
           <div>
-            <small>V11 手册推荐 · 校内步行</small>
+            <small>V12 手册推荐 · 校内步行</small>
             <strong>
               {distance} · {duration}
             </strong>

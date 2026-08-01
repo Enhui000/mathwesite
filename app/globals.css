@@ -1685,15 +1685,12 @@ h1 {
 
 @keyframes foldTurn {
   from {
-    opacity: 0.56;
     transform: rotateX(-26deg) translateY(18px) scale(0.96);
   }
   48% {
-    opacity: 0.96;
     transform: rotateX(10deg) translateY(0) scale(1.02);
   }
   to {
-    opacity: 1;
     transform: rotateX(0deg) translateY(0) scale(1);
   }
 }
@@ -1733,22 +1730,18 @@ h1 {
 
 @keyframes transitionLift {
   from {
-    opacity: 0.54;
     transform: translateY(34px) scaleY(0.92);
   }
   to {
-    opacity: 1;
     transform: translateY(0) scaleY(1);
   }
 }
 
 @keyframes sectionRise {
   from {
-    opacity: 0.5;
     transform: translateY(54px) scale(0.985);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
@@ -2524,21 +2517,42 @@ h1 {
 }
 
 .flow-transition b {
+  background:
+    linear-gradient(90deg, transparent, rgba(28, 95, 194, 0.18), transparent),
+    linear-gradient(180deg, rgba(200, 216, 240, 0.16), transparent);
   inset: 22% -2% 20%;
-  opacity: 0.18;
+  mix-blend-mode: normal;
+  opacity: 0.24;
   z-index: 3;
 }
 
 .flow-to-paper::before {
-  background: linear-gradient(180deg, var(--paper), #eef2f8 82%);
+  background: linear-gradient(
+    180deg,
+    var(--paper) 0 12%,
+    var(--cyan) 52%,
+    var(--background) 100%
+  );
 }
 
 .flow-to-dark::before {
-  background: linear-gradient(180deg, #eef2f8, #001b3b 84%);
+  background: linear-gradient(
+    180deg,
+    var(--background) 0 8%,
+    var(--cyan) 38%,
+    var(--blue) 70%,
+    var(--ink) 100%
+  );
 }
 
 .flow-to-light::before {
-  background: linear-gradient(180deg, #001b3b, var(--paper) 84%);
+  background: linear-gradient(
+    180deg,
+    var(--ink) 0,
+    var(--blue) 30%,
+    var(--cyan) 64%,
+    var(--paper) 100%
+  );
 }
 
 .site-header {
