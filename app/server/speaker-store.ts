@@ -17,6 +17,15 @@ const IMAGE_EXTENSIONS: Record<string, string> = {
   "image/webp": "webp",
 };
 
+const PREVIOUS_SCHEDULE_SESSIONS: Record<string, string> = {
+  "du-heng": "08.20 15:30-16:30",
+  "hu-haoyu": "08.17 14:00-15:00",
+  "hu-yongquan": "08.18 14:00-15:00",
+  "min-yu": "08.20 14:00-15:00",
+  "wang-shanwen": "08.18 15:30-16:30",
+  "zhao-heer": "08.17 15:30-16:30",
+};
+
 export class SpeakerStoreError extends Error {}
 
 function hasBlobStorage() {
@@ -56,6 +65,13 @@ function mergeWithDefaults(stored: Speaker[]) {
       if (saved.abstract === "报告摘要待报告人补充。") {
         merged.abstract = fallback.abstract;
       }
+    }
+
+    // Keep editable profile text while migrating unchanged session fields to
+    // the revised handbook schedule.
+    if (saved?.session === PREVIOUS_SCHEDULE_SESSIONS[fallback.id]) {
+      merged.session = fallback.session;
+      merged.talkNo = fallback.talkNo;
     }
 
     return merged;
