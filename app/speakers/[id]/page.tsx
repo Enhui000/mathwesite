@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { conference } from "../../data";
-import { MathCanvas } from "../../MathCanvas";
 import { getSpeakerById } from "../../server/speaker-store";
 import { SpeakerEditor } from "./SpeakerEditor";
 
@@ -42,23 +41,23 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
 
   return (
     <main className="speaker-detail-page">
-      <header className="site-header">
-        <Link className="brand" href="/" aria-label="返回会议首页">
-          <span className="brand-mark">AG</span>
-          <span>Dalian NT &amp; AG 2026</span>
+      <header className="conference-header">
+        <Link href="/" aria-label="返回会议首页">
+          2026 Dalian Number Theory and Arithmetic Geometry
         </Link>
-        <nav className="nav" aria-label="页面导航">
-          <Link href="/#speakers">报告人</Link>
-          <Link href="/#program">日程</Link>
-          <Link href="/#venue">地点</Link>
+        <nav aria-label="页面导航">
+          <Link href="/?panel=speakers#conference-information">报告人</Link>
+          <Link href="/?panel=program#conference-information">日程</Link>
+          <Link href="/?panel=venue#conference-information">地点</Link>
         </nav>
       </header>
 
-      <section className="speaker-hero">
-        <MathCanvas />
-        <div className="hero-noise" aria-hidden="true" />
+      <section className="speaker-hero static-speaker-hero">
         <div className="speaker-hero-content">
-          <Link className="back-link" href="/#speakers">
+          <Link
+            className="back-link"
+            href="/?panel=speakers#conference-information"
+          >
             返回报告人列表
           </Link>
           <SpeakerEditor speaker={speaker} />

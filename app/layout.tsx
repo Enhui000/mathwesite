@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "大连数论与算术几何研讨会",
+  title: "2026年大连数论与算术几何研讨会",
   description:
     "Dalian Number Theory and Arithmetic Geometry Conference, Aug 16-21, 2026.",
   icons: {

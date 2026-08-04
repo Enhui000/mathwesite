@@ -1,5 +1,5 @@
 export const conference = {
-  name: "大连数论与算术几何研讨会",
+  name: "2026年大连数论与算术几何研讨会",
   englishName: "Dalian Number Theory and Arithmetic Geometry Conference",
   dates: "2026年8月16日 - 8月21日",
   shortDates: "Aug 16-21, 2026",
