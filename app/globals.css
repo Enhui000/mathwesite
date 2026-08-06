@@ -3849,7 +3849,7 @@ textarea {
 
 .conference-header {
   align-items: center;
-  background: var(--blue);
+  background: var(--ink);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: space-between;
@@ -3929,6 +3929,15 @@ textarea {
   line-height: 1.15;
   margin: 0;
   max-width: 560px;
+}
+
+.static-hero-subtitle {
+  color: rgba(1, 44, 99, 0.62);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 10px 0 0;
+  max-width: 520px;
 }
 
 .workspace-intro dt {

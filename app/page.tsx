@@ -25,6 +25,7 @@ export default function Home() {
       <section className="static-conference-hero" id="top">
         <div className="static-hero-content">
           <h1>{conference.name}</h1>
+          <p className="static-hero-subtitle">{conference.englishName}</p>
         </div>
       </section>
 
