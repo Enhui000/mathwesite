@@ -85,11 +85,6 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
           </aside>
           <div className="detail-copy">
             <section>
-              <p className="section-kicker">Biography</p>
-              <h2>个人简介</h2>
-              <p>{speaker.bio}</p>
-            </section>
-            <section>
               <p className="section-kicker">Abstract</p>
               <h2>报告摘要</h2>
               <p>{speaker.abstract}</p>

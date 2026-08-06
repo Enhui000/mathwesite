@@ -31,6 +31,17 @@ const panelTabs: Array<{ id: ConferencePanel; label: string; index: string }> = 
 ];
 
 const handbookPages = Array.from({ length: 11 }, (_, index) => index + 1);
+const programTimes = [
+  "09:20",
+  "09:30",
+  "10:30",
+  "11:00",
+  "12:00",
+  "14:30",
+  "15:30",
+  "16:00",
+  "17:30",
+];
 
 export function ConferenceHub() {
   const [panel, setPanel] = useState<ConferencePanel>("program");
@@ -162,32 +173,48 @@ export function ConferenceHub() {
               <p>会议地点</p>
               <strong>{conference.venueName}</strong>
             </div>
-            <div className="hub-program-grid">
+            <div className="hub-program-grid" role="table" aria-label="会议日程">
               {schedule.map((day) => (
-                <article className="hub-program-day" key={day.day}>
-                  <header>
-                    <small>{day.label}</small>
-                    <strong>{day.day}</strong>
-                  </header>
-                  <ol>
-                    {day.events.map(([time, title]) => (
-                      <li
-                        className={
-                          title.includes("茶歇") || title.includes("午餐")
-                            ? "hub-program-break"
-                            : title.includes("开幕式")
-                              ? "hub-program-highlight"
-                              : ""
-                        }
-                        key={`${day.day}-${time}-${title}`}
-                      >
-                        <time>{time}</time>
-                        <span>{title}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </article>
+                <div
+                  className="hub-program-day-header"
+                  role="columnheader"
+                  key={day.day}
+                >
+                  <small>{day.label}</small>
+                  <strong>{day.day}</strong>
+                </div>
               ))}
+              {programTimes.flatMap((time) =>
+                schedule.map((day) => {
+                  const event = day.events.find(
+                    ([eventTime]) => eventTime === time,
+                  );
+                  const title = event?.[1];
+                  const stateClass = !title
+                    ? " hub-program-empty"
+                    : title.includes("茶歇") || title.includes("午餐")
+                      ? " hub-program-break"
+                      : title.includes("开幕式")
+                        ? " hub-program-highlight"
+                        : "";
+
+                  return (
+                    <div
+                      className={`hub-program-event${stateClass}`}
+                      role="cell"
+                      key={`${day.day}-${time}`}
+                      aria-label={title ? `${time} ${title}` : `${time} 无安排`}
+                    >
+                      {title ? (
+                        <>
+                          <time>{time}</time>
+                          <span>{title}</span>
+                        </>
+                      ) : null}
+                    </div>
+                  );
+                }),
+              )}
             </div>
           </div>
         ) : null}
@@ -239,10 +266,6 @@ export function ConferenceHub() {
                 <section>
                   <span>报告摘要</span>
                   <p>{selectedSpeaker.abstract}</p>
-                </section>
-                <section>
-                  <span>个人简介</span>
-                  <p>{selectedSpeaker.bio}</p>
                 </section>
                 <a
                   className="hub-edit-link"

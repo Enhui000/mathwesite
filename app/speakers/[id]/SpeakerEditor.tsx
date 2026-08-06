@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 import { speakerInitials, type Speaker } from "../../data";
 
-type DraftSpeaker = Omit<Speaker, "id" | "photo" | "keywords"> & {
+type DraftSpeaker = Omit<Speaker, "id" | "photo" | "keywords" | "bio"> & {
   keywords: string;
 };
 
@@ -25,7 +25,6 @@ function createDraft(speaker: Speaker): DraftSpeaker {
     talkNo: speaker.talkNo,
     talkTitle: speaker.talkTitle,
     keywords: speaker.keywords.join(", "),
-    bio: speaker.bio,
     abstract: speaker.abstract,
   };
 }
@@ -344,20 +343,6 @@ export function SpeakerEditor({ speaker }: { speaker: Speaker }) {
                         }))
                       }
                       placeholder="Number Theory, Arithmetic Geometry"
-                    />
-                  </label>
-                  <label>
-                    <span>个人简介</span>
-                    <textarea
-                      value={draft.bio}
-                      onChange={(event) =>
-                        setDraft((current) => ({
-                          ...current,
-                          bio: event.target.value,
-                        }))
-                      }
-                      rows={7}
-                      required
                     />
                   </label>
                   <label>

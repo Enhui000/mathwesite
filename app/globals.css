@@ -3417,16 +3417,16 @@ textarea {
   min-width: 980px;
 }
 
-.hub-program-day {
+.hub-program-grid > * {
   border-right: 1px solid rgba(10, 58, 125, 0.16);
   min-width: 0;
 }
 
-.hub-program-day:last-child {
+.hub-program-grid > :nth-child(5n) {
   border-right: 0;
 }
 
-.hub-program-day > header {
+.hub-program-day-header {
   background: #f5f7fb;
   color: var(--navy);
   display: grid;
@@ -3435,22 +3435,16 @@ textarea {
   padding: 15px;
 }
 
-.hub-program-day > header small {
+.hub-program-day-header small {
   color: rgba(10, 58, 125, 0.58);
   font-size: 9px;
 }
 
-.hub-program-day > header strong {
+.hub-program-day-header strong {
   font-size: 24px;
 }
 
-.hub-program-day ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.hub-program-day li {
+.hub-program-event {
   border-top: 1px solid rgba(10, 58, 125, 0.13);
   color: var(--navy);
   display: grid;
@@ -3459,28 +3453,32 @@ textarea {
   padding: 11px 13px;
 }
 
-.hub-program-day time {
+.hub-program-event time {
   color: var(--blue);
   font-size: 10px;
   font-weight: 760;
 }
 
-.hub-program-day li span {
+.hub-program-event span {
   font-size: 12px;
   line-height: 1.45;
 }
 
-.hub-program-day .hub-program-break {
+.hub-program-event.hub-program-break {
   background: #c8d8f0;
 }
 
-.hub-program-day .hub-program-highlight {
+.hub-program-event.hub-program-highlight {
   background: var(--blue);
   color: #ffffff;
 }
 
-.hub-program-day .hub-program-highlight time {
+.hub-program-event.hub-program-highlight time {
   color: rgba(255, 255, 255, 0.74);
+}
+
+.hub-program-empty {
+  background: #fbfcfe;
 }
 
 .hub-speakers-panel {
@@ -3851,8 +3849,8 @@ textarea {
 
 .conference-header {
   align-items: center;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(1, 44, 99, 0.16);
+  background: var(--blue);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: space-between;
   min-height: 58px;
@@ -3863,7 +3861,7 @@ textarea {
 }
 
 .conference-header > a {
-  color: var(--ink);
+  color: #ffffff;
   font-size: 12px;
   font-weight: 760;
   letter-spacing: 0;
@@ -3880,8 +3878,8 @@ textarea {
 .conference-header nav a {
   background: transparent;
   border: 0;
-  border-left: 1px solid rgba(1, 44, 99, 0.1);
-  color: rgba(1, 44, 99, 0.72);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.82);
   cursor: pointer;
   font-size: 12px;
   font-weight: 700;
@@ -3893,8 +3891,8 @@ textarea {
 .conference-header nav button:focus-visible,
 .conference-header nav a:hover,
 .conference-header nav a:focus-visible {
-  background: var(--background);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
   outline: none;
 }
 
@@ -4284,7 +4282,7 @@ textarea {
   }
 
   .conference-header nav {
-    border-top: 1px solid rgba(1, 44, 99, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
