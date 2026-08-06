@@ -3902,18 +3902,18 @@ textarea {
   align-items: center;
   background-color: #ffffff;
   background-image: url("/conference-poster.jpg");
-  background-position: right 5vw center;
+  background-position: right 7vw center;
   background-repeat: no-repeat;
-  background-size: auto 94%;
+  background-size: auto 60%;
   display: flex;
-  min-height: min(720px, 76svh);
+  min-height: clamp(280px, 32svh, 340px);
   overflow: hidden;
-  padding: 72px clamp(24px, 7vw, 112px);
+  padding: 24px clamp(24px, 7vw, 112px);
   position: relative;
 }
 
 .static-hero-content {
-  max-width: 680px;
+  max-width: 600px;
   position: relative;
   z-index: 1;
 }
@@ -3924,26 +3924,30 @@ textarea {
   font-size: 11px;
   font-weight: 760;
   letter-spacing: 0;
-  margin: 0 0 20px;
+  margin: 0;
   text-transform: uppercase;
+}
+
+.static-hero-kicker {
+  margin-bottom: 10px;
 }
 
 .static-hero-content h1 {
   color: var(--ink);
-  font-size: 44px;
+  font-size: 27px;
   font-weight: 720;
   letter-spacing: 0;
-  line-height: 1.12;
+  line-height: 1.15;
   margin: 0;
-  max-width: 650px;
+  max-width: 560px;
 }
 
 .static-hero-subtitle {
   color: rgba(1, 44, 99, 0.62);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 20px;
-  line-height: 1.5;
-  margin: 22px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 10px 0 0;
   max-width: 520px;
 }
 
@@ -3952,17 +3956,17 @@ textarea {
   border-top: 1px solid rgba(1, 44, 99, 0.18);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 34px 0 0;
-  max-width: 620px;
+  margin: 16px 0 0;
+  max-width: 560px;
 }
 
 .static-hero-facts div {
-  padding: 16px 18px 16px 0;
+  padding: 9px 14px 9px 0;
 }
 
 .static-hero-facts div + div {
   border-left: 1px solid rgba(1, 44, 99, 0.14);
-  padding-left: 18px;
+  padding-left: 14px;
 }
 
 .static-hero-facts dt,
@@ -3981,10 +3985,19 @@ textarea {
   margin: 0;
 }
 
+.static-hero-facts dt {
+  font-size: 9px;
+  margin-bottom: 3px;
+}
+
+.static-hero-facts dd {
+  font-size: 12px;
+}
+
 .static-hero-actions {
   display: flex;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 14px;
 }
 
 .static-hero-actions button {
@@ -3992,10 +4005,10 @@ textarea {
   border: 1px solid var(--ink);
   color: #ffffff;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 760;
-  min-height: 44px;
-  padding: 0 20px;
+  min-height: 36px;
+  padding: 0 16px;
 }
 
 .static-hero-actions button + button {
@@ -4311,16 +4324,16 @@ textarea {
 
 @media (max-width: 980px) {
   .static-conference-hero {
-    background-position: right -70px center;
-    background-size: auto 82%;
+    background-position: right -10px center;
+    background-size: auto 56%;
   }
 
   .static-hero-content {
-    max-width: 56%;
+    max-width: 62%;
   }
 
   .static-hero-content h1 {
-    font-size: 38px;
+    font-size: 26px;
   }
 
   .workspace-intro {
@@ -4359,23 +4372,23 @@ textarea {
   }
 
   .static-conference-hero {
-    align-items: start;
-    background-position: center calc(100% + 118px);
-    background-size: auto 58%;
-    min-height: 730px;
-    padding: 54px 20px 310px;
+    align-items: center;
+    background-position: right 18px center;
+    background-size: auto 40%;
+    min-height: 340px;
+    padding: 28px 20px;
   }
 
   .static-hero-content {
-    max-width: none;
+    max-width: 58%;
   }
 
   .static-hero-content h1 {
-    font-size: 32px;
+    font-size: 22px;
   }
 
   .static-hero-subtitle {
-    font-size: 16px;
+    display: none;
   }
 
   .static-hero-facts {
@@ -4391,6 +4404,7 @@ textarea {
   .static-hero-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
   }
 
   .static-hero-actions button {

@@ -392,39 +392,32 @@ export function ConferenceHub() {
 
             <section className="dalian-guide-notes">
               <div>
-                <small>游记共识 · 综合整理</small>
+                <small>出行提示 · 综合整理</small>
                 <p>
                   星海广场更适合傍晚；滨海路景色集中但全程很长，选一段即可；东港适合晚间散步；海边普遍风大。
                 </p>
               </div>
               <nav aria-label="大连旅行外部参考">
                 <a
-                  href="https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E8%BF%9E%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  小红书攻略
-                </a>
-                <a
-                  href="https://www.zhihu.com/search?type=content&q=%E5%A4%A7%E8%BF%9E%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  知乎讨论
-                </a>
-                <a
                   href="https://whly.ln.gov.cn/whly/wlzt/sjly/ajjq/2026030215590914845/index.shtml"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  辽宁文旅
+                  辽宁文旅 · 棒棰岛
                 </a>
                 <a
-                  href="https://govt.chinadaily.com.cn/s/202308/04/WS64ccc628498ea274927c7013/wandering-in-dalian-binhai-road.html"
+                  href="https://whly.ln.gov.cn/whly/gsxw/2025071411411959915/index.shtml"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  滨海路参考
+                  大连旅游服务手册
+                </a>
+                <a
+                  href="https://www.ln.gov.cn/web/sqgk/whly/ajjq/dl/index.shtml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  辽宁政府 · 大连景区
                 </a>
               </nav>
             </section>
