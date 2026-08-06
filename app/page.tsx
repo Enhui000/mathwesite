@@ -24,29 +24,7 @@ export default function Home() {
 
       <section className="static-conference-hero" id="top">
         <div className="static-hero-content">
-          <p className="static-hero-kicker">
-            Number Theory · Arithmetic Geometry
-          </p>
           <h1>{conference.name}</h1>
-          <p className="static-hero-subtitle">{conference.englishName}</p>
-          <dl className="static-hero-facts">
-            <div>
-              <dt>日期</dt>
-              <dd>{conference.dates}</dd>
-            </div>
-            <div>
-              <dt>地点</dt>
-              <dd>{conference.venueName}</dd>
-            </div>
-          </dl>
-          <div className="static-hero-actions">
-            <ConferencePanelButton panel="program">
-              查看会议日程
-            </ConferencePanelButton>
-            <ConferencePanelButton panel="materials">
-              查看会议手册
-            </ConferencePanelButton>
-          </div>
         </div>
       </section>
 

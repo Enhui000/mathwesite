@@ -3901,10 +3901,6 @@ textarea {
 .static-conference-hero {
   align-items: center;
   background-color: #ffffff;
-  background-image: url("/conference-poster.jpg");
-  background-position: right 7vw center;
-  background-repeat: no-repeat;
-  background-size: auto 60%;
   display: flex;
   min-height: clamp(280px, 32svh, 340px);
   overflow: hidden;
@@ -3918,7 +3914,6 @@ textarea {
   z-index: 1;
 }
 
-.static-hero-kicker,
 .workspace-intro p {
   color: var(--blue);
   font-size: 11px;
@@ -3926,10 +3921,6 @@ textarea {
   letter-spacing: 0;
   margin: 0;
   text-transform: uppercase;
-}
-
-.static-hero-kicker {
-  margin-bottom: 10px;
 }
 
 .static-hero-content h1 {
@@ -3942,34 +3933,6 @@ textarea {
   max-width: 560px;
 }
 
-.static-hero-subtitle {
-  color: rgba(1, 44, 99, 0.62);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
-  line-height: 1.35;
-  margin: 10px 0 0;
-  max-width: 520px;
-}
-
-.static-hero-facts {
-  border-bottom: 1px solid rgba(1, 44, 99, 0.18);
-  border-top: 1px solid rgba(1, 44, 99, 0.18);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 16px 0 0;
-  max-width: 560px;
-}
-
-.static-hero-facts div {
-  padding: 9px 14px 9px 0;
-}
-
-.static-hero-facts div + div {
-  border-left: 1px solid rgba(1, 44, 99, 0.14);
-  padding-left: 14px;
-}
-
-.static-hero-facts dt,
 .workspace-intro dt {
   color: rgba(1, 44, 99, 0.52);
   font-size: 10px;
@@ -3977,43 +3940,11 @@ textarea {
   margin-bottom: 5px;
 }
 
-.static-hero-facts dd,
 .workspace-intro dd {
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
   margin: 0;
-}
-
-.static-hero-facts dt {
-  font-size: 9px;
-  margin-bottom: 3px;
-}
-
-.static-hero-facts dd {
-  font-size: 12px;
-}
-
-.static-hero-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.static-hero-actions button {
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 760;
-  min-height: 36px;
-  padding: 0 16px;
-}
-
-.static-hero-actions button + button {
-  background: #ffffff;
-  color: var(--ink);
 }
 
 .conference-workspace {
@@ -4323,11 +4254,6 @@ textarea {
 }
 
 @media (max-width: 980px) {
-  .static-conference-hero {
-    background-position: right -10px center;
-    background-size: auto 56%;
-  }
-
   .static-hero-content {
     max-width: 62%;
   }
@@ -4373,8 +4299,6 @@ textarea {
 
   .static-conference-hero {
     align-items: center;
-    background-position: right 18px center;
-    background-size: auto 40%;
     min-height: 340px;
     padding: 28px 20px;
   }
@@ -4385,30 +4309,6 @@ textarea {
 
   .static-hero-content h1 {
     font-size: 22px;
-  }
-
-  .static-hero-subtitle {
-    display: none;
-  }
-
-  .static-hero-facts {
-    grid-template-columns: 1fr;
-  }
-
-  .static-hero-facts div + div {
-    border-left: 0;
-    border-top: 1px solid rgba(1, 44, 99, 0.14);
-    padding-left: 0;
-  }
-
-  .static-hero-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-  }
-
-  .static-hero-actions button {
-    padding-inline: 10px;
   }
 
   .conference-workspace {
