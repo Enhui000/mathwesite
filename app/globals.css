@@ -3930,7 +3930,7 @@ textarea {
 
 .static-hero-content h1 {
   color: var(--ink);
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 720;
   letter-spacing: 0;
   line-height: 1.12;
@@ -4030,6 +4030,25 @@ textarea {
   margin: 0;
 }
 
+.dalian-guide-trigger {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(1, 44, 99, 0.26);
+  color: rgba(1, 44, 99, 0.62);
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 14px;
+  padding: 0 0 4px;
+}
+
+.dalian-guide-trigger:hover,
+.dalian-guide-trigger:focus-visible,
+.dalian-guide-trigger[aria-pressed="true"] {
+  border-color: var(--blue);
+  color: var(--blue);
+  outline: none;
+}
+
 .workspace-intro dl {
   display: grid;
   gap: 36px;
@@ -4115,6 +4134,158 @@ textarea {
   padding-top: 28px;
 }
 
+.hub-dalian-guide {
+  padding: 28px 30px 42px;
+}
+
+.dalian-guide-heading {
+  align-items: end;
+  border-bottom: 1px solid rgba(1, 44, 99, 0.16);
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  padding-bottom: 22px;
+}
+
+.dalian-guide-heading small,
+.dalian-guide-copy > small,
+.dalian-guide-notes small {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.dalian-guide-heading h3 {
+  color: var(--ink);
+  font-size: 26px;
+  letter-spacing: 0;
+  margin: 6px 0 0;
+}
+
+.dalian-guide-heading p {
+  color: rgba(1, 44, 99, 0.66);
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 520px;
+}
+
+.dalian-guide-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: 22px;
+}
+
+.dalian-guide-grid article {
+  border: 1px solid rgba(1, 44, 99, 0.18);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+}
+
+.dalian-guide-grid figure {
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.dalian-guide-grid figure img {
+  object-fit: cover;
+}
+
+.dalian-guide-grid figure::after {
+  background: linear-gradient(transparent 56%, rgba(1, 44, 99, 0.72));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.dalian-guide-grid figcaption {
+  bottom: 8px;
+  font-size: 8px;
+  left: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+.dalian-guide-grid figcaption a {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dalian-guide-copy {
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+}
+
+.dalian-guide-copy h4 {
+  color: var(--ink);
+  font-size: 18px;
+  letter-spacing: 0;
+  margin: 7px 0 9px;
+}
+
+.dalian-guide-copy p {
+  color: rgba(1, 44, 99, 0.78);
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.dalian-guide-copy > span {
+  color: rgba(1, 44, 99, 0.52);
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 12px 0 18px;
+}
+
+.dalian-guide-copy > a {
+  align-self: start;
+  border-bottom: 1px solid rgba(1, 44, 99, 0.32);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 720;
+  margin-top: auto;
+  padding-bottom: 3px;
+}
+
+.dalian-guide-notes {
+  align-items: end;
+  border-top: 1px solid rgba(1, 44, 99, 0.16);
+  display: flex;
+  gap: 28px;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 18px;
+}
+
+.dalian-guide-notes p {
+  color: rgba(1, 44, 99, 0.66);
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 6px 0 0;
+  max-width: 650px;
+}
+
+.dalian-guide-notes nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  justify-content: flex-end;
+}
+
+.dalian-guide-notes nav a {
+  color: rgba(1, 44, 99, 0.58);
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .compact-footer {
   align-items: center;
   background: var(--ink);
@@ -4149,7 +4320,7 @@ textarea {
   }
 
   .static-hero-content h1 {
-    font-size: 46px;
+    font-size: 38px;
   }
 
   .workspace-intro {
@@ -4200,7 +4371,7 @@ textarea {
   }
 
   .static-hero-content h1 {
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .static-hero-subtitle {
@@ -4264,6 +4435,28 @@ textarea {
 
   .workspace-content .hub-speaker-directory {
     max-height: 250px;
+  }
+
+  .hub-dalian-guide {
+    padding: 22px 16px 34px;
+  }
+
+  .dalian-guide-heading,
+  .dalian-guide-notes {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .dalian-guide-heading h3 {
+    font-size: 22px;
+  }
+
+  .dalian-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dalian-guide-notes nav {
+    justify-content: start;
   }
 
   .compact-footer {

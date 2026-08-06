@@ -1,4 +1,9 @@
-export type ConferencePanel = "program" | "speakers" | "venue" | "materials";
+export type ConferencePanel =
+  | "program"
+  | "speakers"
+  | "venue"
+  | "materials"
+  | "travel";
 
 export type ConferencePanelDetail = {
   panel: ConferencePanel;

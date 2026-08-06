@@ -14,6 +14,7 @@ import {
   amapWebUrl,
   campusWalkingRoute,
   conference,
+  dalianGuideSpots,
   googleMapsUrl,
   schedule,
   speakerInitials,
@@ -65,6 +66,10 @@ export function ConferenceHub() {
       const requestedPanel = new URLSearchParams(window.location.search).get(
         "panel",
       );
+      if (requestedPanel === "travel") {
+        setPanel("travel");
+        return;
+      }
       const requestedTab = panelTabs.find((tab) => tab.id === requestedPanel);
       if (requestedTab) setPanel(requestedTab.id);
     });
@@ -104,6 +109,14 @@ export function ConferenceHub() {
         <div>
           <p>Conference information</p>
           <h2 id="conference-workspace-title">会议信息</h2>
+          <button
+            className="dalian-guide-trigger"
+            type="button"
+            aria-pressed={panel === "travel"}
+            onClick={() => setPanel("travel")}
+          >
+            会后参考：大连景点与旅行攻略
+          </button>
         </div>
         <dl>
           <div>
@@ -136,7 +149,8 @@ export function ConferenceHub() {
       <div
         className="workspace-content"
         id={`conference-panel-${panel}`}
-        role="tabpanel"
+        role={panel === "travel" ? "region" : "tabpanel"}
+        aria-label={panel === "travel" ? "大连景点与旅行攻略" : undefined}
         ref={contentRef}
       >
         {panel === "program" ? (
@@ -323,6 +337,97 @@ export function ConferenceHub() {
                 </figure>
               ))}
             </div>
+          </div>
+        ) : null}
+
+        {panel === "travel" ? (
+          <div className="hub-dalian-guide">
+            <header className="dalian-guide-heading">
+              <div>
+                <small>Dalian after hours</small>
+                <h3>会后看一眼大连</h3>
+              </div>
+              <p>
+                不占会议主流程，只提供晚间和半日空档的简明参考。景区开放、票务及活动时间请以当天公告为准。
+              </p>
+            </header>
+
+            <div className="dalian-guide-grid">
+              {dalianGuideSpots.map((spot) => (
+                <article key={spot.title}>
+                  <figure>
+                    <Image
+                      src={spot.image}
+                      alt={spot.imageAlt}
+                      fill
+                      sizes="(max-width: 760px) 88vw, 30vw"
+                    />
+                    <figcaption>
+                      <a
+                        href={spot.photoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        图片：{spot.photoCredit}
+                      </a>
+                    </figcaption>
+                  </figure>
+                  <div className="dalian-guide-copy">
+                    <small>{spot.timeframe}</small>
+                    <h4>{spot.title}</h4>
+                    <p>{spot.summary}</p>
+                    <span>{spot.practical}</span>
+                    <AmapLink
+                      href={amapSearchUrl(spot.keyword)}
+                      wechatHref={amapWebUrl(spot.keyword)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      在高德地图中查看
+                    </AmapLink>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <section className="dalian-guide-notes">
+              <div>
+                <small>游记共识 · 综合整理</small>
+                <p>
+                  星海广场更适合傍晚；滨海路景色集中但全程很长，选一段即可；东港适合晚间散步；海边普遍风大。
+                </p>
+              </div>
+              <nav aria-label="大连旅行外部参考">
+                <a
+                  href="https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E8%BF%9E%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  小红书攻略
+                </a>
+                <a
+                  href="https://www.zhihu.com/search?type=content&q=%E5%A4%A7%E8%BF%9E%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  知乎讨论
+                </a>
+                <a
+                  href="https://whly.ln.gov.cn/whly/wlzt/sjly/ajjq/2026030215590914845/index.shtml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  辽宁文旅
+                </a>
+                <a
+                  href="https://govt.chinadaily.com.cn/s/202308/04/WS64ccc628498ea274927c7013/wandering-in-dalian-binhai-road.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  滨海路参考
+                </a>
+              </nav>
+            </section>
           </div>
         ) : null}
       </div>

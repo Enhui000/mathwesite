@@ -367,6 +367,45 @@ export const travel = [
   },
 ];
 
+export const dalianGuideSpots = [
+  {
+    title: "星海广场 · 星海湾",
+    timeframe: "会议日晚间 · 1.5-2小时",
+    keyword: "大连星海广场",
+    image: "/dalian-guide/xinghai-bay.jpg",
+    imageAlt: "星海湾游艇码头与跨海大桥",
+    summary:
+      "离会场相对近，适合报告结束后看海、沿广场散步，并顺路看星海湾跨海大桥。",
+    practical: "广场开阔、海风明显，傍晚建议带一件薄外套。",
+    photoCredit: "Jerry Zhang / Unsplash",
+    photoUrl: "https://unsplash.com/photos/Kwse8pSkjDk",
+  },
+  {
+    title: "中山广场 · 东港海岸",
+    timeframe: "城市夜景 · 2-3小时",
+    keyword: "大连东港商务区",
+    image: "/dalian-guide/dalian-harbor.jpg",
+    imageAlt: "大连海岸附近的港口建筑",
+    summary:
+      "先看中山广场周边历史建筑，再到东港沿海步道散步，适合安排在同一个晚上。",
+    practical: "音乐喷泉和临时活动会随季节、天气调整，出发前以现场公告为准。",
+    photoCredit: "zhou shen / Pexels",
+    photoUrl: "https://www.pexels.com/photo/tower-in-dalian-habor-20016527/",
+  },
+  {
+    title: "滨海路 · 棒棰岛",
+    timeframe: "空闲半日 · 4-5小时",
+    keyword: "大连棒棰岛宾馆景区",
+    image: "/dalian-guide/coastal-harbor.jpg",
+    imageAlt: "大连海岸与港湾远景",
+    summary:
+      "适合有半天空档时看山海景观。滨海路很长，建议只选东段，并与棒棰岛组合。",
+    practical: "景区开放和入园安排可能变化，购票或叫车前先查看当天信息。",
+    photoCredit: "Zhu Qiankun / Unsplash",
+    photoUrl: "https://unsplash.com/photos/o4gu82qUGpE",
+  },
+] as const;
+
 export const campusWalkingRoute = {
   startName: "大连理工国际会议中心",
   start: [121.53261, 38.875773] as const,
@@ -381,9 +420,9 @@ export function speakerInitials(name: string) {
   return name.slice(0, 2);
 }
 
-export function amapSearchUrl() {
+export function amapSearchUrl(keyword = conference.venueKeyword) {
   const params = new URLSearchParams({
-    keyword: conference.venueKeyword,
+    keyword,
     city: conference.city,
     view: "map",
     src: "dalian-nt-ag-2026",
@@ -393,9 +432,9 @@ export function amapSearchUrl() {
   return `https://uri.amap.com/search?${params.toString()}`;
 }
 
-export function amapWebUrl() {
+export function amapWebUrl(keyword = conference.venueKeyword) {
   const params = new URLSearchParams({
-    query: conference.venueKeyword,
+    query: keyword,
     city: conference.city,
   });
 
