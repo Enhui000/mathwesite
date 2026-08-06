@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Dalian Number Theory and Arithmetic Geometry Conference, Aug 16-21, 2026.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/conference-icon.svg",
+    shortcut: "/conference-icon.svg",
   },
 };
 
