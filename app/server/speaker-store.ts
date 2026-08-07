@@ -26,6 +26,27 @@ const PREVIOUS_SCHEDULE_SESSIONS: Record<string, string> = {
   "zhao-heer": "08.17 15:30-16:30",
 };
 
+const PREVIOUS_REPORT_TITLES: Record<string, string[]> = {
+  "ding-yiwen": ["报告题目待更新", "TBA"],
+  "hu-yongquan": ["报告题目待更新", "TBA"],
+  "sheng-mao": ["报告题目待更新", "TBA"],
+  "hu-haoyu": ["A Generalization of Deligne's Finiteness Theorem"],
+  "zhao-heer": [
+    "Reduction Types of Rigid 1-Motives via Galois Representation",
+  ],
+  "wang-shanwen": ["P-adic Hahn Series with Sparse Support"],
+  "chen-ke": [
+    "On Images of Galois Representations Associated to One-motives",
+  ],
+  "fu-lei": [
+    "Arithmetic Hypergeometric D-modules and Exponential Sums for Reductive Groups",
+  ],
+  "xu-daxin": ["Comparison between Algebraic and Arithmetic D-Modules"],
+  "min-yu": ["Congruences of Syntomic Cohomology"],
+  "du-heng": ["P-adic Monodromy and Newton Polygons"],
+  "qin-hourong": ["Isogeny-based Cryptography"],
+};
+
 export class SpeakerStoreError extends Error {}
 
 function hasBlobStorage() {
@@ -72,6 +93,21 @@ function mergeWithDefaults(stored: Speaker[]) {
     if (saved?.session === PREVIOUS_SCHEDULE_SESSIONS[fallback.id]) {
       merged.session = fallback.session;
       merged.talkNo = fallback.talkNo;
+    }
+
+    // Apply the August report-information update only to records that still
+    // contain the previous published title. Later speaker edits remain intact.
+    if (
+      saved &&
+      PREVIOUS_REPORT_TITLES[fallback.id]?.includes(saved.talkTitle)
+    ) {
+      merged.talkTitle = fallback.talkTitle;
+      merged.abstract = fallback.abstract;
+      merged.keywords = fallback.keywords;
+    }
+
+    if (fallback.id === "du-heng" && saved?.affiliation === "清华大学") {
+      merged.affiliation = fallback.affiliation;
     }
 
     return merged;

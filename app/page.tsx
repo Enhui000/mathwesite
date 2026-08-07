@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ConferenceHub } from "./ConferenceHub";
 import { ConferencePanelButton } from "./ConferencePanelButton";
 import { conference } from "./data";
@@ -12,8 +13,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="single-page-site">
-      <header className="conference-header">
-        <a href="#top">2026 Dalian Number Theory and Arithmetic Geometry</a>
+      <header className="conference-header" id="top">
+        <a className="conference-title" href="#top">
+          <strong>{conference.name}</strong>
+          <span>{conference.englishName}</span>
+        </a>
         <nav aria-label="会议信息导航">
           <ConferencePanelButton panel="program">日程</ConferencePanelButton>
           <ConferencePanelButton panel="speakers">报告人</ConferencePanelButton>
@@ -22,18 +26,40 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="static-conference-hero" id="top">
-        <div className="static-hero-content">
-          <h1>{conference.name}</h1>
-          <p className="static-hero-subtitle">{conference.englishName}</p>
-        </div>
-      </section>
-
       <ConferenceHub />
 
-      <footer className="compact-footer">
-        <span>{conference.englishName}</span>
-        <a href="#top">返回顶部</a>
+      <footer className="conference-footer">
+        <section className="footer-organizers" aria-labelledby="organizers-title">
+          <p id="organizers-title">主办单位</p>
+          <div>
+            <Image
+              src="/university-logos/dalian-university-of-technology.svg"
+              alt="大连理工大学"
+              width={282}
+              height={75}
+            />
+            <Image
+              className="fudan-footer-logo"
+              src="/university-logos/fudan-university.png"
+              alt="复旦大学"
+              width={832}
+              height={266}
+            />
+          </div>
+        </section>
+        <address className="footer-contacts">
+          <span>联系人</span>
+          <a href="mailto:wangyupeng@fudan.edu.cn">
+            王宇鹏 · 复旦大学 · wangyupeng@fudan.edu.cn
+          </a>
+          <a href="mailto:lumingzhao@dlut.edu.cn">
+            赵路明 · 大连理工大学 · lumingzhao@dlut.edu.cn
+          </a>
+        </address>
+        <nav className="footer-links" aria-label="页尾导航">
+          <ConferencePanelButton panel="travel">大连旅行参考</ConferencePanelButton>
+          <a href="#top">返回顶部</a>
+        </nav>
       </footer>
     </main>
   );

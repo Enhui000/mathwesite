@@ -42,8 +42,9 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
   return (
     <main className="speaker-detail-page">
       <header className="conference-header">
-        <Link href="/" aria-label="返回会议首页">
-          2026 Dalian Number Theory and Arithmetic Geometry
+        <Link className="conference-title" href="/" aria-label="返回会议首页">
+          <strong>{conference.name}</strong>
+          <span>{conference.englishName}</span>
         </Link>
         <nav aria-label="页面导航">
           <Link href="/?panel=speakers#conference-information">报告人</Link>

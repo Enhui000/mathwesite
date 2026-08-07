@@ -114,33 +114,8 @@ export function ConferenceHub() {
       className="conference-workspace"
       id="conference-information"
       ref={workspaceRef}
-      aria-labelledby="conference-workspace-title"
+      aria-label="会议信息"
     >
-      <header className="workspace-intro">
-        <div>
-          <p>Conference information</p>
-          <h2 id="conference-workspace-title">会议信息</h2>
-          <button
-            className="dalian-guide-trigger"
-            type="button"
-            aria-pressed={panel === "travel"}
-            onClick={() => setPanel("travel")}
-          >
-            会后参考：大连景点与旅行攻略
-          </button>
-        </div>
-        <dl>
-          <div>
-            <dt>日期</dt>
-            <dd>{conference.dates}</dd>
-          </div>
-          <div>
-            <dt>地点</dt>
-            <dd>{conference.venueName}</dd>
-          </div>
-        </dl>
-      </header>
-
       <div className="bookmark-tabs" role="tablist" aria-label="会议信息栏目">
         {panelTabs.map((tab) => (
           <button
@@ -172,6 +147,13 @@ export function ConferenceHub() {
               <span>{conference.registrationVenue}</span>
               <p>会议地点</p>
               <strong>{conference.venueName}</strong>
+              <button
+                className="dalian-guide-trigger"
+                type="button"
+                onClick={() => setPanel("travel")}
+              >
+                会后参考：大连景点与旅行攻略
+              </button>
             </div>
             <div className="hub-program-grid" role="table" aria-label="会议日程">
               {schedule.map((day) => (

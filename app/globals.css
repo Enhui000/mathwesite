@@ -3853,19 +3853,33 @@ textarea {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: space-between;
-  min-height: 58px;
+  min-height: 74px;
   padding: 0 clamp(20px, 4vw, 64px);
   position: sticky;
   top: 0;
   z-index: 40;
 }
 
-.conference-header > a {
+.conference-title {
   color: #ffffff;
-  font-size: 12px;
-  font-weight: 760;
-  letter-spacing: 0;
+  display: grid;
+  gap: 3px;
+  min-width: 0;
   text-decoration: none;
+}
+
+.conference-title strong {
+  font-size: 17px;
+  font-weight: 720;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.conference-title span {
+  color: rgba(255, 255, 255, 0.64);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  line-height: 1.2;
 }
 
 .conference-header nav {
@@ -3896,89 +3910,11 @@ textarea {
   outline: none;
 }
 
-.static-conference-hero {
-  align-items: center;
-  background-color: #ffffff;
-  display: flex;
-  min-height: clamp(220px, 25svh, 270px);
-  overflow: hidden;
-  padding: 24px clamp(24px, 7vw, 112px);
-  position: relative;
-}
-
-.static-hero-content {
-  max-width: 760px;
-  position: relative;
-  z-index: 1;
-}
-
-.workspace-intro p {
-  color: var(--blue);
-  font-size: 11px;
-  font-weight: 760;
-  letter-spacing: 0;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.static-hero-content h1 {
-  color: var(--ink);
-  font-size: 38px;
-  font-weight: 720;
-  letter-spacing: 0;
-  line-height: 1.15;
-  margin: 0;
-  max-width: 760px;
-}
-
-.static-hero-subtitle {
-  color: rgba(1, 44, 99, 0.62);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
-  line-height: 1.35;
-  margin: 10px 0 0;
-  max-width: 520px;
-}
-
-.workspace-intro dt {
-  color: rgba(1, 44, 99, 0.52);
-  font-size: 10px;
-  font-weight: 760;
-  margin-bottom: 5px;
-}
-
-.workspace-intro dd {
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 700;
-  margin: 0;
-}
-
 .conference-workspace {
   margin: 0 auto;
   max-width: 1320px;
-  padding: 72px clamp(20px, 4vw, 54px) 110px;
-  scroll-margin-top: 58px;
-}
-
-.workspace-intro {
-  align-items: end;
-  display: flex;
-  gap: 40px;
-  justify-content: space-between;
-  margin-bottom: 34px;
-}
-
-.workspace-intro p {
-  margin-bottom: 8px;
-}
-
-.workspace-intro h2 {
-  color: var(--ink);
-  font-size: 38px;
-  letter-spacing: 0;
-  line-height: 1.1;
-  margin: 0;
+  padding: 14px clamp(20px, 4vw, 54px) 90px;
+  scroll-margin-top: 74px;
 }
 
 .dalian-guide-trigger {
@@ -3992,19 +3928,18 @@ textarea {
   padding: 0 0 4px;
 }
 
+.hub-program-summary .dalian-guide-trigger {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 4px;
+}
+
 .dalian-guide-trigger:hover,
 .dalian-guide-trigger:focus-visible,
 .dalian-guide-trigger[aria-pressed="true"] {
   border-color: var(--blue);
   color: var(--blue);
   outline: none;
-}
-
-.workspace-intro dl {
-  display: grid;
-  gap: 36px;
-  grid-template-columns: repeat(2, minmax(180px, auto));
-  margin: 0;
 }
 
 .bookmark-tabs {
@@ -4060,7 +3995,8 @@ textarea {
 
 .workspace-content {
   background: #ffffff;
-  border: 1px solid var(--ink);
+  border: 1px solid rgba(1, 44, 99, 0.22);
+  border-top: 0;
   height: min(780px, 78svh);
   min-height: 620px;
   overflow: auto;
@@ -4237,18 +4173,81 @@ textarea {
   text-underline-offset: 3px;
 }
 
-.compact-footer {
-  align-items: center;
+.conference-footer {
+  align-items: end;
   background: var(--ink);
   color: rgba(255, 255, 255, 0.66);
-  display: flex;
-  font-size: 11px;
-  justify-content: space-between;
-  min-height: 72px;
-  padding: 0 clamp(20px, 4vw, 64px);
+  display: grid;
+  gap: clamp(24px, 5vw, 72px);
+  grid-template-columns: minmax(280px, 1.1fr) minmax(300px, 1fr) auto;
+  min-height: 148px;
+  padding: 28px clamp(20px, 4vw, 64px);
 }
 
-.compact-footer a {
+.footer-organizers p,
+.footer-contacts > span {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.footer-organizers > div {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+}
+
+.footer-organizers img {
+  height: 34px;
+  opacity: 0.76;
+  width: auto;
+}
+
+.footer-organizers .fudan-footer-logo {
+  filter: brightness(0) invert(1);
+  height: 36px;
+}
+
+.footer-contacts {
+  display: grid;
+  font-size: 10px;
+  font-style: normal;
+  gap: 7px;
+}
+
+.footer-contacts > span {
+  margin-bottom: 2px;
+}
+
+.footer-contacts a {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-links {
+  align-items: end;
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.footer-links button,
+.footer-links a {
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.66);
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0;
+}
+
+.footer-links button:hover,
+.footer-links button:focus-visible,
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.footer-contacts a:hover,
+.footer-contacts a:focus-visible {
   color: #ffffff;
 }
 
@@ -4261,21 +4260,14 @@ textarea {
 }
 
 @media (max-width: 980px) {
-  .static-hero-content {
-    max-width: 100%;
+  .conference-footer {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .static-hero-content h1 {
-    font-size: 34px;
-  }
-
-  .workspace-intro {
-    align-items: start;
-    flex-direction: column;
-  }
-
-  .workspace-intro dl {
-    width: 100%;
+  .footer-links {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, auto);
+    justify-content: end;
   }
 }
 
@@ -4286,8 +4278,16 @@ textarea {
     padding: 10px 16px 0;
   }
 
-  .conference-header > a {
+  .conference-title {
     padding: 2px 0 10px;
+  }
+
+  .conference-title strong {
+    font-size: 15px;
+  }
+
+  .conference-title span {
+    font-size: 9px;
   }
 
   .conference-header nav {
@@ -4304,36 +4304,9 @@ textarea {
     padding: 0 5px;
   }
 
-  .static-conference-hero {
-    align-items: center;
-    min-height: 240px;
-    padding: 24px 20px;
-  }
-
-  .static-hero-content {
-    max-width: 100%;
-  }
-
-  .static-hero-content h1 {
-    font-size: 28px;
-  }
-
   .conference-workspace {
-    padding: 44px 14px 72px;
-    scroll-margin-top: 88px;
-  }
-
-  .workspace-intro {
-    gap: 22px;
-  }
-
-  .workspace-intro h2 {
-    font-size: 32px;
-  }
-
-  .workspace-intro dl {
-    gap: 14px;
-    grid-template-columns: 1fr;
+    padding: 10px 14px 64px;
+    scroll-margin-top: 110px;
   }
 
   .bookmark-tabs {
@@ -4380,10 +4353,26 @@ textarea {
     justify-content: start;
   }
 
-  .compact-footer {
+  .conference-footer {
+    align-items: start;
+    gap: 24px;
+    grid-template-columns: 1fr;
+    padding-block: 26px;
+  }
+
+  .footer-organizers > div {
     align-items: start;
     flex-direction: column;
-    gap: 10px;
-    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-contacts,
+  .footer-links {
+    grid-column: auto;
+  }
+
+  .footer-links {
+    justify-content: start;
+    justify-items: start;
   }
 }
