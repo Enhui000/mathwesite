@@ -19,32 +19,62 @@ const IMAGE_EXTENSIONS: Record<string, string> = {
 
 const PREVIOUS_SCHEDULE_SESSIONS: Record<string, string> = {
   "du-heng": "08.20 15:30-16:30",
+  "fu-lei": "08.20 09:30-10:30",
   "hu-haoyu": "08.17 14:00-15:00",
   "hu-yongquan": "08.18 14:00-15:00",
   "min-yu": "08.20 14:00-15:00",
   "wang-shanwen": "08.18 15:30-16:30",
+  "xiao-liang": "08.18 09:30-10:30",
   "zhao-heer": "08.17 15:30-16:30",
 };
 
 const PREVIOUS_REPORT_TITLES: Record<string, string[]> = {
-  "ding-yiwen": ["报告题目待更新", "TBA"],
+  "ding-yiwen": [
+    "报告题目待更新",
+    "TBA",
+    "Classicality of weight one modular forms",
+  ],
   "hu-yongquan": ["报告题目待更新", "TBA"],
-  "sheng-mao": ["报告题目待更新", "TBA"],
-  "hu-haoyu": ["A Generalization of Deligne's Finiteness Theorem"],
+  "sheng-mao": [
+    "报告题目待更新",
+    "TBA",
+    "Nonlinear Hodge correspondence in positive characteristic",
+  ],
+  "xiao-liang": ["报告题目待更新", "TBA"],
+  "hu-haoyu": [
+    "A Generalization of Deligne's Finiteness Theorem",
+    "A generalization of Deligne's finiteness theorem",
+  ],
   "zhao-heer": [
     "Reduction Types of Rigid 1-Motives via Galois Representation",
+    "Reduction types of rigid 1-motives via Galois representation",
   ],
-  "wang-shanwen": ["P-adic Hahn Series with Sparse Support"],
+  "wang-shanwen": [
+    "P-adic Hahn Series with Sparse Support",
+    "p-adic Hahn series with sparse support",
+  ],
   "chen-ke": [
     "On Images of Galois Representations Associated to One-motives",
+    "On images of Galois representations associated to one-motives",
   ],
   "fu-lei": [
     "Arithmetic Hypergeometric D-modules and Exponential Sums for Reductive Groups",
+    "Arithmetic hypergeometric D-modules and exponential sums for reductive groups",
   ],
-  "xu-daxin": ["Comparison between Algebraic and Arithmetic D-Modules"],
-  "min-yu": ["Congruences of Syntomic Cohomology"],
-  "du-heng": ["P-adic Monodromy and Newton Polygons"],
+  "xu-daxin": [
+    "Comparison between Algebraic and Arithmetic D-Modules",
+    "Comparison between algebraic and arithmetic D-modules",
+  ],
+  "min-yu": [
+    "Congruences of Syntomic Cohomology",
+    "Congruences of syntomic cohomology",
+  ],
+  "du-heng": [
+    "P-adic Monodromy and Newton Polygons",
+    "p-adic monodromy and Newton polygons",
+  ],
   "qin-hourong": ["Isogeny-based Cryptography"],
+  "ouyang-yi": ["Isogeny-based Cryptography"],
 };
 
 export class SpeakerStoreError extends Error {}
@@ -66,8 +96,8 @@ function mergeWithDefaults(stored: Speaker[]) {
       id: fallback.id,
     };
 
-    // V11 moved three speakers. Only replace values that still match V10 so
-    // any later edits made by a speaker remain intact.
+    // Earlier handbooks moved three speakers. Only replace values that still match
+    // the former schedule so later edits made by a speaker remain intact.
     if (fallback.id === "liu-ruochuan" && saved?.session === "08.21 11:00-12:00") {
       merged.session = fallback.session;
       merged.talkNo = fallback.talkNo;
@@ -95,7 +125,7 @@ function mergeWithDefaults(stored: Speaker[]) {
       merged.talkNo = fallback.talkNo;
     }
 
-    // Apply the August report-information update only to records that still
+    // Apply handbook report-information updates only to records that still
     // contain the previous published title. Later speaker edits remain intact.
     if (
       saved &&
@@ -106,7 +136,10 @@ function mergeWithDefaults(stored: Speaker[]) {
       merged.keywords = fallback.keywords;
     }
 
-    if (fallback.id === "du-heng" && saved?.affiliation === "清华大学") {
+    if (
+      fallback.id === "du-heng" &&
+      saved?.affiliation === "清华大学丘成桐数学科学中心（YMSC）"
+    ) {
       merged.affiliation = fallback.affiliation;
     }
 

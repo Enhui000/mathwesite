@@ -50,10 +50,10 @@ export default function Home() {
         <address className="footer-contacts">
           <span>联系人</span>
           <a href="mailto:wangyupeng@fudan.edu.cn">
-            王宇鹏 · 复旦大学 · wangyupeng@fudan.edu.cn
+            王宇鹏 · 复旦大学 · 188 1050 6544 · wangyupeng@fudan.edu.cn
           </a>
           <a href="mailto:lumingzhao@dlut.edu.cn">
-            赵路明 · 大连理工大学 · lumingzhao@dlut.edu.cn
+            赵路明 · 大连理工大学 · 131 6750 5513 · lumingzhao@dlut.edu.cn
           </a>
         </address>
         <nav className="footer-links" aria-label="页尾导航">
