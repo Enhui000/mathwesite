@@ -130,7 +130,7 @@ export function CampusRouteViewer({
 
       const bounds = L.latLngBounds(imageBounds);
       L.imageOverlay("/campus-map-clean-v12.jpg", bounds, {
-        alt: "V17会议手册中的大连理工大学凌水主校区地图",
+        alt: "V18会议手册中的大连理工大学凌水主校区地图",
       }).addTo(map);
 
       L.polyline(handbookRoute, {
@@ -264,7 +264,7 @@ export function CampusRouteViewer({
           </button>
         </div>
         <span className="route-map-source">
-          <LocateFixed aria-hidden="true" size={13} /> V17 手册路线
+          <LocateFixed aria-hidden="true" size={13} /> V18 手册路线
         </span>
       </div>
 
@@ -272,7 +272,7 @@ export function CampusRouteViewer({
         <div className="route-summary-heading">
           <Footprints aria-hidden="true" size={20} strokeWidth={1.8} />
           <div>
-            <small>V17 手册推荐 · 校内步行</small>
+            <small>V18 手册推荐 · 校内步行</small>
             <strong>
               {distance} · {duration}
             </strong>

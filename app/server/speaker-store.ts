@@ -40,7 +40,11 @@ const PREVIOUS_REPORT_TITLES: Record<string, string[]> = {
     "TBA",
     "Nonlinear Hodge correspondence in positive characteristic",
   ],
-  "xiao-liang": ["报告题目待更新", "TBA"],
+  "xiao-liang": [
+    "报告题目待更新",
+    "TBA",
+    "Arithmetic Hypergeometric D-modules and Exponential Sums for Reductive Groups",
+  ],
   "hu-haoyu": [
     "A Generalization of Deligne's Finiteness Theorem",
     "A generalization of Deligne's finiteness theorem",

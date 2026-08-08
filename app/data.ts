@@ -167,13 +167,11 @@ const speakerRecords: Speaker[] = [
     affiliation: "北京大学",
     session: "08.20 09:30-10:30",
     talkNo: "Talk 1",
-    talkTitle:
-      "Arithmetic Hypergeometric D-modules and Exponential Sums for Reductive Groups",
-    keywords: ["D-Modules", "Exponential Sums"],
+    talkTitle: "TBA",
+    keywords: ["Arithmetic Geometry", "p-adic Geometry"],
     photo: "",
     bio: defaultBio,
-    abstract:
-      "For a family of representations of a reductive group, we define a Laurent polynomial on the group. The exponential sum associated to this Laurent polynomial is called the hypergeometric exponential sum. We introduce an arithmetic hypergeometric D-module to study the exponential sum. We show it is overholonomic, determine the open set where it is an overconvergent F-isocrystal, and estimate its rank. We apply these results to the estimation of the exponential sum. This is a joint work with Xuanyou Li and Chenhan Liu.",
+    abstract: "TBA",
   },
   {
     id: "ding-yiwen",
