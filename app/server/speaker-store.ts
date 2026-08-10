@@ -29,6 +29,8 @@ const PREVIOUS_SCHEDULE_SESSIONS: Record<string, string> = {
 };
 
 const PREVIOUS_REPORT_TITLES: Record<string, string[]> = {
+  "fan-yangyu": ["报告题目待更新", "TBA"],
+  "liu-ruochuan": ["报告题目待更新", "TBA"],
   "ding-yiwen": [
     "报告题目待更新",
     "TBA",

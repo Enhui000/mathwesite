@@ -129,11 +129,12 @@ const speakerRecords: Speaker[] = [
     affiliation: "北京理工大学",
     session: "08.17 11:00-12:00",
     talkNo: "Talk 2",
-    talkTitle: "TBA",
-    keywords: ["Number Theory", "Arithmetic Geometry"],
+    talkTitle: "Syntomic Formalism and p-adic Logarithms of Heegner Classes",
+    keywords: ["Syntomic Cohomology", "p-adic L-functions"],
     photo: "",
     bio: defaultBio,
-    abstract: "TBA",
+    abstract:
+      "The Birch-Swinnerton-Dyer conjecture predicts a precise relation between the behavior of an L-function at its central point and the arithmetic of an elliptic curve. In the rank-one setting, Heegner classes provide a fundamental bridge between the analytic and arithmetic sides. I will explain a p-adic Waldspurger formula, valid also when p is non-split in the CM field, which relates the p-adic logarithms of generalized Heegner classes to special values of anticyclotomic p-adic L-functions. The main geometric input is syntomic formalism with coefficients, which allows the relevant Abel-Jacobi calculation to be carried out on semistable Shimura curves. Combined with anticyclotomic Iwasawa theory, this yields a p-converse theorem for self-dual CM characters, with applications to Sylvester's conjecture on sums of two rational cubes and to Goldfeld's conjecture for CM elliptic curves.",
   },
   {
     id: "hu-haoyu",
@@ -311,11 +312,12 @@ const speakerRecords: Speaker[] = [
     affiliation: "北京大学",
     session: "08.17 09:30-10:30",
     talkNo: "Talk 1",
-    talkTitle: "TBA",
-    keywords: ["p-adic Hodge Theory", "Arithmetic Geometry"],
+    talkTitle: "Some Examples of Eigencurves",
+    keywords: ["Eigencurves", "p-adic Geometry"],
     photo: "",
     bio: defaultBio,
-    abstract: "TBA",
+    abstract:
+      "In joint work with Truong, Xiao and Zhao, we develop a theory on the geometry of eigencurves. In this talk, I will apply this framework to examine several concrete examples.",
   },
 ];
 
