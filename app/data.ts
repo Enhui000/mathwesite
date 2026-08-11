@@ -5,8 +5,8 @@ export const conference = {
   shortDates: "Aug 16-21, 2026",
   registration: "8月16日（周日）14:00-21:00",
   registrationVenue:
-    "大连理工国际会议中心（住宿 / 午餐 / 晚餐；当天17:30-20:00酒店一楼有晚餐）",
-  venueName: "大连理工大学综合教学1号楼",
+    "报到：大连理工国际会议中心 · 午餐 / 晚餐：国际会议中心2楼；8月16日17:30-20:00酒店一楼有晚餐",
+  venueName: "大连理工大学综合教学1号楼 153房间",
   campus: "凌水主校区",
   city: "大连",
   address: "大连理工大学凌水主校区 · 综合教学1号楼",
@@ -52,7 +52,7 @@ export const schedule = [
       ["14:30", "Talk 3 · 胡永泉，中国科学院数学与系统科学研究院"],
       ["15:30", "茶歇"],
       ["16:00", "Talk 4 · 王善文，中国人民大学"],
-      ["17:30", "会议晚宴"],
+      ["18:00", "会议晚宴"],
     ],
   },
   {
@@ -378,7 +378,10 @@ export const dalianGuideSpots = [
     imageAlt: "星海湾游艇码头与跨海大桥",
     summary:
       "离会场相对近，适合报告结束后看海、沿广场散步，并顺路看星海湾跨海大桥。",
-    practical: "广场开阔、海风明显，傍晚建议带一件薄外套。",
+    notice:
+      "2026年8月灯光秀：周日至周四 20:00、21:00；周五、周六 20:00、21:00、21:30。",
+    practical:
+      "星海湾大桥夏季灯光演绎每场约10分钟；如遇重大活动或恶劣天气，以当天通知为准（信息核对：2026-08-11）。",
     photoCredit: "Jerry Zhang / Unsplash",
     photoUrl: "https://unsplash.com/photos/Kwse8pSkjDk",
   },
@@ -390,6 +393,7 @@ export const dalianGuideSpots = [
     imageAlt: "大连海岸附近的港口建筑",
     summary:
       "先看中山广场周边历史建筑，再到东港沿海步道散步，适合安排在同一个晚上。",
+    notice: "",
     practical: "音乐喷泉和临时活动会随季节、天气调整，出发前以现场公告为准。",
     photoCredit: "zhou shen / Pexels",
     photoUrl: "https://www.pexels.com/photo/tower-in-dalian-habor-20016527/",
@@ -402,9 +406,26 @@ export const dalianGuideSpots = [
     imageAlt: "大连海岸与港湾远景",
     summary:
       "适合有半天空档时看山海景观。滨海路很长，建议只选东段，并与棒棰岛组合。",
+    notice: "",
     practical: "景区开放和入园安排可能变化，购票或叫车前先查看当天信息。",
     photoCredit: "Zhu Qiankun / Unsplash",
     photoUrl: "https://unsplash.com/photos/o4gu82qUGpE",
+  },
+  {
+    title: "白云山 · 滨海鹿",
+    timeframe: "城市山林 · 遇见不保证",
+    keyword: "大连白云山山体公园",
+    image: "/dalian-guide/baiyun-sika-deer.jpg",
+    imageAlt: "大连白云山山体公园内的野生梅花鹿",
+    summary:
+      "白云山山体公园是梅花鹿核心活动区域；滨海路和莲花山也有出没记录，是否遇见取决于鹿群当天活动情况。",
+    notice:
+      "较明确点位：莲花山寺等核心观鹿区域；白云山山体公园、滨海路沿线也有出没记录。",
+    practical:
+      "请保持距离，不追逐、不喧哗、不随意投喂；林缘草地注意防蜱。",
+    photoCredit: "Photo / IC · China Daily",
+    photoUrl:
+      "https://govt.chinadaily.com.cn/s/202309/04/WS64fae61c498ed2d7b7e9a7db/wild-sika-deers-spotted-at-dalians-baiyun-mountain-park.html",
   },
 ] as const;
 

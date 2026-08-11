@@ -4061,7 +4061,7 @@ textarea {
 .dalian-guide-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   padding-top: 22px;
 }
 
@@ -4123,6 +4123,17 @@ textarea {
   margin: 0;
 }
 
+.dalian-guide-alert {
+  background: #eef3fa;
+  border-left: 3px solid var(--blue);
+  color: var(--ink);
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 0 0 11px;
+  padding: 9px 10px;
+}
+
 .dalian-guide-copy > span {
   color: rgba(1, 44, 99, 0.52);
   display: block;
@@ -4171,6 +4182,12 @@ textarea {
   font-size: 10px;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .dalian-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .conference-footer {

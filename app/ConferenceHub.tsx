@@ -41,6 +41,7 @@ const programTimes = [
   "15:30",
   "16:00",
   "17:30",
+  "18:00",
 ];
 
 export function ConferenceHub() {
@@ -316,7 +317,7 @@ export function ConferenceHub() {
           <div className="hub-materials-panel">
             <div className="hub-materials-toolbar">
               <div>
-                <small>Conference handbook · V20</small>
+                <small>Conference handbook · V21</small>
                 <h3>会议手册完整预览</h3>
               </div>
               <a
@@ -380,6 +381,11 @@ export function ConferenceHub() {
                   <div className="dalian-guide-copy">
                     <small>{spot.timeframe}</small>
                     <h4>{spot.title}</h4>
+                    {spot.notice ? (
+                      <strong className="dalian-guide-alert">
+                        {spot.notice}
+                      </strong>
+                    ) : null}
                     <p>{spot.summary}</p>
                     <span>{spot.practical}</span>
                     <AmapLink
@@ -423,6 +429,27 @@ export function ConferenceHub() {
                   rel="noopener noreferrer"
                 >
                   辽宁政府 · 大连景区
+                </a>
+                <a
+                  href="https://finance.sina.com.cn/wm/2026-06-22/doc-iniehmvs0321592.shtml?froms=ggmp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  大观新闻 · 灯光秀时段
+                </a>
+                <a
+                  href="https://www.forestry.gov.cn/c/www/dfdt/667402.jhtml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  国家林草局 · 大连滨海鹿
+                </a>
+                <a
+                  href="https://dlxg.gov.cn/xxgk/zdlyxxgk/jycabl/gzxca/2026/189187.htm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  西岗区政府 · 观鹿区域
                 </a>
               </nav>
             </section>
