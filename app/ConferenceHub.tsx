@@ -317,7 +317,7 @@ export function ConferenceHub() {
           <div className="hub-materials-panel">
             <div className="hub-materials-toolbar">
               <div>
-                <small>Conference handbook · V21</small>
+                <small>Conference handbook · Print Edition V5</small>
                 <h3>会议手册完整预览</h3>
               </div>
               <a

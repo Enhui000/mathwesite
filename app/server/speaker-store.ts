@@ -79,7 +79,7 @@ const PREVIOUS_REPORT_TITLES: Record<string, string[]> = {
     "P-adic Monodromy and Newton Polygons",
     "p-adic monodromy and Newton polygons",
   ],
-  "qin-hourong": ["Isogeny-based Cryptography"],
+  "qin-hourong": ["报告题目待更新", "TBA", "Isogeny-based Cryptography"],
   "ouyang-yi": ["Isogeny-based Cryptography"],
 };
 

@@ -5,8 +5,8 @@ export const conference = {
   shortDates: "Aug 16-21, 2026",
   registration: "8月16日（周日）14:00-21:00",
   registrationVenue:
-    "报到：大连理工国际会议中心 · 午餐 / 晚餐：国际会议中心2楼；8月16日17:30-20:00酒店一楼有晚餐",
-  venueName: "大连理工大学综合教学1号楼 153房间",
+    "报到：大连理工国际会议中心酒店 · 午餐 / 晚餐：大连理工国际会议中心2楼；8月16日17:30-20:00酒店一楼有晚餐",
+  venueName: "大连理工大学综合教学1号楼 153教室",
   campus: "凌水主校区",
   city: "大连",
   address: "大连理工大学凌水主校区 · 综合教学1号楼",
@@ -117,11 +117,13 @@ const speakerRecords: Speaker[] = [
     affiliation: "南京大学",
     session: "08.21 09:30-10:30",
     talkNo: "Talk 1",
-    talkTitle: "TBA",
-    keywords: ["Number Theory", "Arithmetic Geometry"],
+    talkTitle:
+      "The CM Conductor and the Lang-Trotter Conjecture for CM Elliptic Curves",
+    keywords: ["CM Elliptic Curves", "Lang-Trotter Conjecture"],
     photo: "",
     bio: defaultBio,
-    abstract: "TBA",
+    abstract:
+      "Whether a quadratic polynomial can represent primes infinitely often - for example, Euler's conjecture that x² + 1 can represent primes infinitely often - is notoriously difficult and remains wide open. More generally, the Hardy-Littlewood conjecture gives an asymptotic formula for the count of such primes. In parallel, for an elliptic curve E over Q with complex multiplication (CM) and a fixed nonzero integer r, the Lang-Trotter conjecture predicts an asymptotic formula for π_E,r(x) = #{p ≤ x : a_p = r}, where a_p is the Frobenius trace. We introduce a new invariant, the CM conductor K_E, which refines the Serre conductor in the CM case. Using K_E, we give a corrected formula for the Lang-Trotter constant c_E,r, differing from the previous one by Baier and Jones. Assuming the Hardy-Littlewood conjecture on quadratic polynomial primes, we prove that our version of the Lang-Trotter conjecture holds for every CM elliptic curve over Q. We compute the constants explicitly for each imaginary quadratic field of class number one, characterize exactly when the constant vanishes, and prove the conjecture unconditionally in the vanishing case. Numerical evidence strongly supports our formulation. This is joint work with Longxi Hu and Kaisheng Lei.",
   },
   {
     id: "fan-yangyu",
