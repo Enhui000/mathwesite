@@ -136,7 +136,7 @@ const speakerRecords: Speaker[] = [
     photo: "",
     bio: defaultBio,
     abstract:
-      "The Birch-Swinnerton-Dyer conjecture predicts a precise relation between the behavior of an L-function at its central point and the arithmetic of an elliptic curve. In the rank-one setting, Heegner classes provide a fundamental bridge between the analytic and arithmetic sides. I will explain a p-adic Waldspurger formula, valid also when p is non-split in the CM field, which relates the p-adic logarithms of generalized Heegner classes to special values of anticyclotomic p-adic L-functions. The main geometric input is syntomic formalism with coefficients, which allows the relevant Abel-Jacobi calculation to be carried out on semistable Shimura curves. Combined with anticyclotomic Iwasawa theory, this yields a p-converse theorem for self-dual CM characters, with applications to Sylvester's conjecture on sums of two rational cubes and to Goldfeld's conjecture for CM elliptic curves.",
+      "The Birch-Swinnerton-Dyer conjecture predicts a precise relation between the behavior of an L-function at its central point and the arithmetic of an elliptic curve. In the rank-one setting, Heegner classes provide a fundamental bridge between the analytic and arithmetic sides. I will explain a p-adic Waldspurger formula, valid also when p is non-split in the CM field, which relates the p-adic logarithms of generalized Heegner classes to special values of anticyclotomic p-adic L-functions. The main geometric input is syntomic formalism with coefficients, which allows the relevant Abel-Jacobi calculation to be carried out on semistable Shimura curves. Combined with anticyclotomic Iwasawa theory, this yields a p-converse theorem for self-dual CM characters, with applications to Sylvester's conjecture on sums of two rational cubes and to Goldfeld's conjecture for CM elliptic curves. This is based on joint work with X. Wan.",
   },
   {
     id: "hu-haoyu",
@@ -170,11 +170,12 @@ const speakerRecords: Speaker[] = [
     affiliation: "北京大学",
     session: "08.20 09:30-10:30",
     talkNo: "Talk 1",
-    talkTitle: "TBA",
-    keywords: ["Arithmetic Geometry", "p-adic Geometry"],
+    talkTitle: "Arithmetic Theta Lifts in Higher Chow Groups",
+    keywords: ["Arithmetic Theta Lifts", "Higher Chow Groups"],
     photo: "",
     bio: defaultBio,
-    abstract: "TBA",
+    abstract:
+      "In the celebrated theory of arithmetic theta liftings, a.k.a. the Kudla program, a key component is to prove the modularity of the generating series with values in (arithmetic) Chow cycles. In this talk, we report on a joint work in progress with Haocheng Fan, Wenxuan Qi, Linli Shi, Peihang Wu, and Yichao Zhang, in which we propose a parallel story for arithmetic theta lifts in higher Chow cycles. I will focus on explaining the basic framework, which involves a (somewhat) new proof of the modularity in the cycles case and a mild generalization of Borcherds products. Assuming a yet-missing technical input on cohomology vanishing, this is expected to construct a modular generating series with values in higher Chow groups of orthogonal Shimura varieties. We conjecture that the regulator of these higher Chow group elements are related to the special values of L-functions, as predicted by Beilinson's conjecture.",
   },
   {
     id: "ding-yiwen",
